@@ -4,7 +4,7 @@ const About = () => {
     const skills = [
         "JavaScript (ES6+)", "React", "Tailwind CSS", "Java",
         "HTML5", "CSS3", "Git", "Responsive Design",
-        "C", "C++", "Python", "Figma"
+        "C", "C++", "Python", "Figma","Sql", "Mongodb"
     ];
 
     return (
