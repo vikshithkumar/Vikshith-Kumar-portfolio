@@ -1,55 +1,130 @@
 import React from 'react';
+import { timeline } from '../siteData';
 
-const About = () => {
-    const skills = [
-        "JavaScript (ES6+)", "React", "Tailwind CSS", "Java",
-        "HTML5", "CSS3", "Git", "Responsive Design",
-        "C", "C++", "Python", "Figma","Sql", "Mongodb"
-    ];
+const skills = [
+  { name: 'JavaScript (ES6+)', cat: 'lang' },
+  { name: 'React',             cat: 'framework' },
+  { name: 'Tailwind CSS',      cat: 'styling' },
+  { name: 'HTML5 / CSS3',      cat: 'styling' },
+  { name: 'Java',              cat: 'lang' },
+  { name: 'C / C++',           cat: 'lang' },
+  { name: 'Python',            cat: 'lang' },
+  { name: 'SQL',               cat: 'data' },
+  { name: 'MongoDB',           cat: 'data' },
+  { name: 'Git & GitHub',      cat: 'tooling' },
+  { name: 'Figma',             cat: 'design' },
+  { name: 'Responsive Design', cat: 'design' },
+  { name: 'REST APIs',         cat: 'tooling' },
+  { name: 'Cloud Computing',   cat: 'infra' },
+];
 
-    return (
-        <section id="about" className="min-h-screen flex items-center justify-center bg-gray-900 py-20 relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30">
-                <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-blue-600/20 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-[10%] left-[-5%] w-[30%] h-[30%] bg-purple-600/20 rounded-full blur-[100px]"></div>
+
+const About = () => (
+  <section
+    id="about"
+    className="py-28 relative overflow-hidden"
+    style={{ background: 'var(--surface-raised)' }}
+  >
+    {/* Subtle glow */}
+    <div
+      className="absolute top-[10%] right-[-8%] w-[35%] h-[35%] rounded-full pointer-events-none"
+      style={{ background: 'var(--accent)', opacity: 'calc(var(--glow-intensity) * 0.5)', filter: 'blur(100px)' }}
+    />
+
+    <div className="container mx-auto px-6 relative z-10">
+      {/* Section header */}
+      <div className="mb-16">
+        <h2 className="text-3xl md:text-5xl font-bold" style={{ color: 'var(--text-primary)' }}>
+          A developer who{' '}
+          <span className="text-gradient">thinks in design</span>
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+        {/* Bio column */}
+        <div className="lg:col-span-3 space-y-6">
+          <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            I got into programming because I wanted to build things that people actually use — not just
+            code exercises. That meant caring about <em>how</em> something looks and feels, not just
+            whether it compiles.
+          </p>
+          <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            My stack spans the full range: data compression algorithms in Java, 3D card-flip memory games
+            in CSS, SQL schema design, and production React UIs. I approach every project the same way — 
+            understand the problem, sketch the architecture, then build it clean.
+          </p>
+          <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            Outside class, I've done internships in Java development, earned NPTEL certification in Cloud
+            Computing, and picked up Git, DBMS, and frontend tooling certificates along the way. I like
+            learning by shipping.
+          </p>
+
+          {/* Skills */}
+          <div className="pt-4">
+            <h3 className="text-sm font-semibold mb-4 flex items-center" style={{ color: 'var(--text-primary)' }}>
+              <span className="accent-line" />
+              Technical Skills
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.map(skill => (
+                <span key={skill.name} className="skill-badge">
+                  {skill.name}
+                </span>
+              ))}
             </div>
+          </div>
+        </div>
 
-            <div className="container mx-auto px-6">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 text-center">
-                        About <span className="text-gradient">Me</span>
-                    </h2>
+        {/* Timeline column */}
+        <div className="lg:col-span-2 space-y-0">
+          <h3 className="text-sm font-semibold mb-6 flex items-center" style={{ color: 'var(--text-primary)' }}>
+            <span className="accent-line" />
+            Experience & Education
+          </h3>
 
-                    <div className="glass-card rounded-3xl p-8 md:p-12 border border-white/5 relative">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-50"></div>
+          <div className="relative">
+            {/* Vertical line */}
+            <div
+              className="absolute left-3 top-2 bottom-2 w-px"
+              style={{ background: 'var(--surface-border)' }}
+            />
 
-                        <p className="text-gray-300 text-lg leading-relaxed mb-10 font-light">
-                            I am a passionate web developer with a keen eye for design and a drive for creating seamless digital experiences.
-                            With a strong foundation in modern web technologies, I specialize in building responsive, user-friendly applications
-                            that solve real-world problems. I enjoy turning complex ideas into elegant, efficient code.
-                        </p>
+            <div className="space-y-8">
+              {timeline.map((item, i) => (
+                <div key={i} className="flex gap-5 relative">
+                  {/* Dot */}
+                  <div
+                    className="w-7 h-7 rounded-full border-2 flex items-center justify-center flex-shrink-0 z-10"
+                    style={{
+                      background: 'var(--surface)',
+                      borderColor: 'var(--accent)',
+                      boxShadow: '0 0 10px var(--accent-glow)',
+                    }}
+                  >
+                    <div
+                      className="w-2.5 h-2.5 rounded-full"
+                      style={{ background: 'var(--accent)' }}
+                    />
+                  </div>
 
-                        <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                            <span className="w-8 h-1 bg-blue-500 rounded-full"></span>
-                            Technical Skills
-                        </h3>
-
-                        <div className="flex flex-wrap gap-3">
-                            {skills.map((skill, index) => (
-                                <span
-                                    key={index}
-                                    className="px-4 py-2 bg-white/5 text-blue-300 rounded-lg text-sm font-medium border border-white/5 hover:bg-white/10 hover:border-blue-500/30 hover:text-blue-200 transition-all cursor-default hover:-translate-y-0.5"
-                                >
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+                  {/* Content */}
+                  <div
+                    className="flex-1 glass-card p-4 rounded-xl"
+                    style={{ borderRadius: 'calc(var(--radius) * 0.75)' }}
+                  >
+                    <p className="mono text-xs mb-1" style={{ color: 'var(--accent)' }}>{item.year}</p>
+                    <p className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{item.role}</p>
+                    <p className="text-xs mb-2" style={{ color: 'var(--text-muted)' }}>{item.org}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{item.detail}</p>
+                  </div>
                 </div>
+              ))}
             </div>
-        </section>
-    );
-};
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 export default About;

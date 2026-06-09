@@ -1,184 +1,203 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { certificates } from '../siteData';
 
-// Import images
-import hackvega from '../assets/certificates/hackvega.jpg';
-import nptelCloud from '../assets/certificates/nptel-cloud.png';
-import gitTraining from '../assets/certificates/git-training.png';
-import isteDataDive from '../assets/certificates/iste-data-dive.png';
-import cognifyzJava from '../assets/certificates/cognifyz-java.png';
-import saiketJava from '../assets/certificates/saiket-java.png';
-import scalerDbms from '../assets/certificates/scaler-dbms.png';
-import tobaccoQuiz from '../assets/certificates/tobacco-quiz.jpg';
-import viksitBharat from '../assets/certificates/viksit-bharat.jpg';
+// ─── Lightbox Modal ────────────────────────────────────────────────────────
+const Lightbox = ({ cert, onClose }) => {
+  // Close on ESC key
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [onClose]);
 
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
+      onClick={onClose}
+    >
+      <div
+        className="relative max-w-4xl w-full max-h-[90vh] flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between mb-3 px-1">
+          <div>
+            <h3 className="font-semibold text-base" style={{ color: '#fff' }}>{cert.title}</h3>
+            <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>{cert.issuer} · {cert.date}</p>
+          </div>
+          <div className="flex items-center gap-3">
+            {cert.verifyUrl && (
+              <a
+                href={cert.verifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs px-3 py-1.5 rounded-full transition-all"
+                style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.8)', border: '1px solid rgba(255,255,255,0.2)' }}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+              >
+                Verify Certificate ↗
+              </a>
+            )}
+            <button
+              onClick={onClose}
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-all"
+              style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+              aria-label="Close"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+
+        {/* Full certificate image */}
+        <div className="overflow-auto rounded-xl" style={{ maxHeight: '80vh' }}>
+          <img
+            src={cert.image}
+            alt={cert.title}
+            className="w-full h-auto object-contain rounded-xl"
+            style={{ display: 'block' }}
+          />
+        </div>
+
+        <p className="text-center text-xs mt-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          Press ESC or click outside to close
+        </p>
+      </div>
+    </div>
+  );
+};
+
+// ─── Fallback Card ────────────────────────────────────────────────────────
+const CertFallback = ({ icon, title, issuer }) => (
+  <div className="w-full h-full flex flex-col items-center justify-center gap-3 p-6">
+    <span className="text-5xl">{icon}</span>
+    <p className="text-sm font-semibold text-center" style={{ color: 'var(--text-primary)' }}>{title}</p>
+    <p className="text-xs text-center" style={{ color: 'var(--text-muted)' }}>{issuer}</p>
+  </div>
+);
+
+// ─── Main Component ────────────────────────────────────────────────────────
 const Certificates = () => {
-    const [filter, setFilter] = useState('All');
+  const [imageErrors, setImageErrors] = useState({});
+  const [expanded, setExpanded] = useState(null); // holds the cert object to show in lightbox
 
-    const certificates = [
-        {
-            title: "HackVega Certificate of Merit",
-            issuer: "HirePro & Careernet",
-            date: "June 2025",
-            image: hackvega,
-            link: "#",
-            category: "Technical"
-        },
-        {
-            title: "Cloud Computing",
-            issuer: "NPTEL",
-            date: "Jul-Oct 2025",
-            image: nptelCloud,
-            link: "#",
-            category: "Technical"
-        },
-        {
-            title: "Git Training",
-            issuer: "Spoken Tutorial, IIT Bombay",
-            date: "18 November 2025",
-            image: gitTraining,
-            link: "#",
-            category: "Technical"
-        },
-        {
-            title: "Java Development Intern",
-            issuer: "Cognifyz Technologies",
-            date: "Sept - Oct 2025",
-            image: cognifyzJava,
-            link: "#",
-            category: "Technical"
-        },
-        {
-            title: "Java Development Intern",
-            issuer: "SaiKet Systems",
-            date: "Sept - Oct 2025",
-            image: saiketJava,
-            link: "#",
-            category: "Technical"
-        },
-        {
-            title: "DBMS Course",
-            issuer: "Scaler Topics",
-            date: "27 October 2025",
-            image: scalerDbms,
-            link: "#",
-            category: "Technical"
-        },
-        {
-            title: "Data Dive Participation",
-            issuer: "New Horizon College of Engineering",
-            date: "28th March 2025",
-            image: isteDataDive,
-            link: "#",
-            category: "Participation"
-        },
-        {
-            title: "World No Tobacco Day Quiz",
-            issuer: "Ministry of Education",
-            date: "2025",
-            image: tobaccoQuiz,
-            link: "#",
-            category: "Participation"
-        },
-        {
-            title: "Viksit Bharat 2025 Quiz",
-            issuer: "MyGov",
-            date: "2025",
-            image: viksitBharat,
-            link: "#",
-            category: "Participation"
-        }
-    ];
+  const handleImgError = (idx) => {
+    setImageErrors(prev => ({ ...prev, [idx]: true }));
+  };
 
-    const filteredCertificates = filter === 'All'
-        ? certificates
-        : certificates.filter(cert => cert.category === filter);
+  return (
+    <>
+      {/* Lightbox */}
+      {expanded && <Lightbox cert={expanded} onClose={() => setExpanded(null)} />}
 
-    const categories = ['All', 'Technical', 'Participation'];
+      <section
+        id="certificates"
+        className="py-28 relative"
+        style={{ background: 'var(--surface-raised)' }}
+      >
+        {/* Glow */}
+        <div
+          className="absolute top-1/3 left-0 w-96 h-96 rounded-full pointer-events-none"
+          style={{ background: 'hsl(160, 84%, 39%)', opacity: 'calc(var(--glow-intensity) * 0.35)', filter: 'blur(120px)' }}
+        />
 
-    return (
-        <section id="certificates" className="min-h-screen flex items-center justify-center bg-gray-900 py-20 relative">
-            {/* Background Glow */}
-            <div className="absolute top-1/3 left-0 w-96 h-96 bg-green-600/10 rounded-full blur-[100px] -z-10"></div>
-            <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -z-10"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          {/* Header */}
+          <div className="mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+              Credentials &{' '}
+              <span className="text-gradient">Certifications</span>
+            </h2>
+            <p className="max-w-xl text-base" style={{ color: 'var(--text-secondary)' }}>
+              {certificates.length} certifications from AWS, Google, SAP, and NPTEL — all verified.
+            </p>
+          </div>
 
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                        My <span className="text-gradient">Certificates</span>
-                    </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-                        Continuous learning is key. Here are some of the certifications I've earned to validate my skills.
-                    </p>
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {certificates.map((cert, idx) => (
+              <article
+                key={idx}
+                className="glass-card overflow-hidden group transition-all duration-300 hover:-translate-y-2 flex flex-col"
+                style={{ borderRadius: 'var(--radius)' }}
+              >
+                {/* Top accent bar */}
+                <div className="h-1 w-full flex-shrink-0" style={{ background: 'var(--accent)' }} />
 
-                    {/* Filter Buttons */}
-                    <div className="flex flex-wrap justify-center gap-4">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat}
-                                onClick={() => setFilter(cat)}
-                                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === cat
-                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
-                                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                                    }`}
-                            >
-                                {cat === 'Technical' ? 'Professional Skills' : cat === 'Participation' ? 'Participation & Awards' : 'All Certificates'}
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                {/* Image area */}
+                <div
+                  className="relative overflow-hidden flex-shrink-0"
+                  style={{ height: '10rem', background: 'var(--surface)' }}
+                >
+                  {imageErrors[idx] ? (
+                    <CertFallback icon={cert.icon} title={cert.title} issuer={cert.issuer} />
+                  ) : (
+                    <>
+                      <img
+                        src={cert.image}
+                        alt={cert.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={() => handleImgError(idx)}
+                      />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredCertificates.map((cert, index) => (
-                        <div
-                            key={index}
-                            className="glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 group"
+                      {/* Hover overlay — Expand button */}
+                      <div
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(3px)' }}
+                      >
+                        <button
+                          onClick={() => setExpanded(cert)}
+                          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all active:scale-95"
+                          style={{
+                            background: 'var(--accent)',
+                            color: '#fff',
+                            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                          }}
+                          onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
+                          onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                         >
-                            <div className="h-64 overflow-hidden relative bg-gray-800 flex items-center justify-center">
-                                {/* Placeholder for when image is missing */}
-                                <div className="absolute inset-0 flex items-center justify-center text-gray-600 text-lg font-medium">
-                                    Certificate Image
-                                </div>
-                                <img
-                                    src={cert.image}
-                                    alt={cert.title}
-                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 relative z-10"
-                                    onError={(e) => {
-                                        e.target.style.display = 'none'; // Hide broken image
-                                    }}
-                                />
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center">
-                                    <a
-                                        href={cert.image}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-white font-medium px-4 py-2 border border-white/30 rounded-full backdrop-blur-sm hover:bg-white/10 transition-colors"
-                                    >
-                                        View Certificate
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="p-6">
-                                <div className="flex justify-between items-start mb-2">
-                                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2">{cert.title}</h3>
-                                    <span className={`text-xs px-2 py-1 rounded-full border ${cert.category === 'Technical'
-                                        ? 'border-blue-500/30 text-blue-400 bg-blue-500/10'
-                                        : 'border-purple-500/30 text-purple-400 bg-purple-500/10'
-                                        }`}>
-                                        {cert.category}
-                                    </span>
-                                </div>
-                                <div className="flex justify-between items-center text-gray-400 text-sm mt-4">
-                                    <span className="truncate max-w-[60%]">{cert.issuer}</span>
-                                    <span>{cert.date}</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                          </svg>
+                          Expand
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
-            </div>
-        </section>
-    );
+
+                {/* Card body */}
+                <div className="p-4 flex flex-col flex-1">
+                  <h3
+                    className="font-semibold text-sm leading-snug mb-0.5"
+                    style={{ color: 'var(--text-primary)' }}
+                  >
+                    {cert.title}
+                  </h3>
+                  {cert.subtitle && (
+                    <p className="text-xs mb-2" style={{ color: 'var(--text-muted)' }}>
+                      {cert.subtitle}
+                    </p>
+                  )}
+                  <div
+                    className="flex justify-between items-center mt-auto pt-3"
+                    style={{ borderTop: '1px solid var(--surface-border)' }}
+                  >
+                    <p className="text-xs font-medium" style={{ color: 'var(--accent)' }}>{cert.issuer}</p>
+                    <p className="mono text-xs" style={{ color: 'var(--text-muted)' }}>{cert.date}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default Certificates;
