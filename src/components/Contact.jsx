@@ -162,12 +162,8 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Availability */}
-            <div className="flex items-center gap-3 p-4 rounded-xl"
-              style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.15)' }}>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-              <p className="text-sm" style={{ color: '#6ee7b7' }}>Available for internships & freelance projects</p>
-            </div>
+
+
           </div>
 
           {/* Right: form OR success card */}

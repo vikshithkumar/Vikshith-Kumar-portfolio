@@ -7,63 +7,38 @@ import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import DesignLab from './components/DesignLab';
-
-const THEMES = {
-  blue:   { h: 217, s: '91%', l: '60%' },
-  emerald:{ h: 160, s: '84%', l: '39%' },
-  violet: { h: 263, s: '85%', l: '65%' },
-  amber:  { h: 38,  s: '95%', l: '55%' },
-};
 
 function App() {
-  const [labOpen, setLabOpen] = useState(false);
-  const [activeTheme, setActiveTheme] = useState('blue');
-  const [radius, setRadius] = useState(16);
-  const [gridOpacity, setGridOpacity] = useState(0.04);
-  const [glowIntensity, setGlowIntensity] = useState(0.18);
+  // Persist theme across sessions
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('portfolio-theme') || 'dark';
+  });
 
   useEffect(() => {
-    const t = THEMES[activeTheme];
-    const root = document.documentElement;
-    root.style.setProperty('--accent-h', t.h);
-    root.style.setProperty('--accent-s', t.s);
-    root.style.setProperty('--accent-l', t.l);
-    root.style.setProperty('--radius', `${radius}px`);
-    root.style.setProperty('--grid-opacity', gridOpacity);
-    root.style.setProperty('--glow-intensity', glowIntensity);
-  }, [activeTheme, radius, gridOpacity, glowIntensity]);
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
+
+  const isDark = theme === 'dark';
 
   return (
-    <div className="min-h-screen text-white font-sans relative">
+    <div className="min-h-screen font-sans relative">
       <Toaster
         position="bottom-right"
         toastOptions={{
           duration: 5000,
           style: {
-            background: '#12151c',
-            color: '#f0f2f7',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: isDark ? '#1F2937' : '#F3F4F6',
+            color: isDark ? '#F8FAFC' : '#0F172A',
+            border: `1px solid ${isDark ? '#2D3748' : '#E5E7EB'}`,
             borderRadius: '12px',
           },
         }}
       />
 
-      <Header onLabToggle={() => setLabOpen(v => !v)} labOpen={labOpen} />
-
-      <DesignLab
-        open={labOpen}
-        onClose={() => setLabOpen(false)}
-        activeTheme={activeTheme}
-        setActiveTheme={setActiveTheme}
-        themes={THEMES}
-        radius={radius}
-        setRadius={setRadius}
-        gridOpacity={gridOpacity}
-        setGridOpacity={setGridOpacity}
-        glowIntensity={glowIntensity}
-        setGlowIntensity={setGlowIntensity}
-      />
+      <Header theme={theme} onToggleTheme={toggleTheme} />
 
       <main className="relative z-10">
         <Hero />

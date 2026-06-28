@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { siteStats } from '../siteData';
+import Particles from './Particles';
 
-const ROLES = ['Design Engineer', 'Frontend Developer', 'Java Developer', 'Full Stack Dev', 'Backend Engineer'];
+const ROLES = ['Frontend Developer', 'Java Developer', 'Full Stack Dev', 'Backend Engineer'];
 
 const Hero = () => {
   const roleRef = useRef(null);
@@ -46,6 +47,20 @@ const Hero = () => {
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24"
     >
+      {/* Particles Background */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <Particles
+          particleColors={["#ffffff", "hsl(var(--accent-h), var(--accent-s), var(--accent-l))"]}
+          particleCount={250}
+          particleSpread={6}
+          speed={0.15}
+          particleBaseSize={80}
+          moveParticlesOnHover={true}
+          alphaParticles
+          disableRotation={false}
+        />
+      </div>
+
       {/* Ambient glows */}
       <div
         className="absolute top-[-15%] left-[-5%] w-[55%] h-[55%] rounded-full pointer-events-none"
@@ -66,14 +81,10 @@ const Hero = () => {
           Arihant Shukla
         </h1>
 
-        {/* Typewriter role */}
         <div
           className="text-xl md:text-3xl font-semibold mb-8 animate-fade-up flex items-center justify-center gap-2"
           style={{ animationDelay: '160ms', color: 'var(--text-secondary)' }}
         >
-          <span className="mono" style={{ color: 'var(--accent)' }}>
-            &gt;_
-          </span>
           <span ref={roleRef} className="mono" style={{ color: 'var(--text-primary)' }} />
           <span
             className="inline-block w-0.5 h-7 animate-pulse"
@@ -86,7 +97,7 @@ const Hero = () => {
           className="text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up"
           style={{ animationDelay: '240ms', color: 'var(--text-secondary)' }}
         >
-          I write clean, efficient code with a strong focus on delivering exceptional user experiences. As a final-year Computer Science student, I specialize in building scalable applications from the ground up — ranging from robust Java backend engines to dynamic, production-ready React applications.
+          I craft clean, efficient code with an obsessive focus on delivering exceptional user experiences. As a final-year Computer Science student, I specialize in architecting scalable applications from the ground up — from high-performance Java backend systems to production-ready React frontends that users actually love.
         </p>
 
         {/* CTA buttons */}

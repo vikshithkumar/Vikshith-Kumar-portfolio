@@ -1,0 +1,420 @@
+/* ═══════════════════════════════════════════════════════
+   HOLOGRAPHIC SPHERE — Full Premium CSS
+═══════════════════════════════════════════════════════ */
+
+.holo-container {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  background: var(--surface);
+  color: var(--text-primary);
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+  user-select: none;
+  /* Subtle radial vignette */
+  background-image: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(0,0,0,0.25) 100%);
+}
+
+/* ── Background ambient blobs ─────────────────────── */
+.holo-blob {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.18;
+  animation: holo-blob-drift 8s ease-in-out infinite alternate;
+}
+
+.holo-blob-top-left    { top: -100px; left: -100px; background: #3B82F6; animation-delay: 0s; }
+.holo-blob-bottom-left { bottom: -100px; left: -100px; background: #06B6D4; animation-delay: -2s; }
+.holo-blob-top-right   { top: -100px; right: -100px; background: #8B5CF6; animation-delay: -4s; }
+.holo-blob-bottom-right{ bottom: -100px; right: -100px; background: #3B82F6; animation-delay: -6s; }
+
+@keyframes holo-blob-drift {
+  from { transform: scale(1) translate(0, 0); }
+  to   { transform: scale(1.15) translate(20px, 15px); }
+}
+
+/* ── HUD Corner Labels ────────────────────────────── */
+.holo-hud {
+  position: absolute;
+  z-index: 10;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  padding: 6px 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  backdrop-filter: blur(4px);
+}
+
+.holo-hud-tl { top: 20px; left: 20px; }
+.holo-hud-br { bottom: 20px; right: 20px; }
+
+.holo-hud-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3B82F6;
+  box-shadow: 0 0 6px #3B82F6;
+  animation: holo-pulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* ── Certificate Node Wrapper ─────────────────────── */
+.holo-node-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.holo-node-wrap:hover {
+  transform: scale(1.1) translateY(-4px);
+}
+
+/* Spinning ring around hovered node */
+.holo-node-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 102px;
+  height: 102px;
+  margin-top: -51px;
+  margin-left: -51px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #3B82F6;
+  border-right-color: #06B6D4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: holo-ring-spin 1.2s linear infinite;
+  pointer-events: none;
+}
+
+.holo-node-wrap:hover .holo-node-ring,
+.holo-node-hovered .holo-node-ring {
+  opacity: 1;
+}
+
+@keyframes holo-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Certificate circle image */
+.holo-node-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(59,130,246,0.2);
+  transition: all 0.3s ease;
+  background: var(--surface-raised);
+  position: relative;
+}
+
+.holo-node-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.holo-node-wrap:hover .holo-node-circle {
+  box-shadow: 0 8px 30px rgba(59,130,246,0.5), 0 0 0 2px rgba(6,182,212,0.6);
+}
+
+/* Certificate label */
+.holo-node-label {
+  font-size: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.25s ease;
+}
+
+.holo-node-wrap:hover .holo-node-label {
+  color: #3B82F6;
+  border-color: rgba(59, 130, 246, 0.6);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+/* ── Detail View ──────────────────────────────────── */
+.holo-detail-view {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 48px 48px;
+  box-sizing: border-box;
+  animation: holo-fade-in 0.45s ease-out forwards;
+  background: radial-gradient(ellipse at 40% 50%, rgba(59,130,246,0.06) 0%, transparent 65%),
+              radial-gradient(ellipse at 70% 60%, rgba(6,182,212,0.05) 0%, transparent 55%);
+}
+
+.holo-detail-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 32px;
+  flex: 1;
+}
+
+/* Back button */
+.holo-back-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 1px;
+}
+
+.holo-back-btn:hover {
+  background: #3B82F6;
+  color: #ffffff;
+  border-color: #3B82F6;
+  transform: translateX(-4px);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.4);
+}
+
+/* Left column: title */
+.holo-detail-title-col { width: 100%; text-align: left; }
+
+.holo-detail-issuer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #06B6D4;
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.holo-detail-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin: 0 0 10px 0;
+}
+
+.holo-detail-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0;
+}
+
+/* Center column: circle preview */
+.holo-detail-center-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.holo-detail-circle {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(59, 130, 246, 0.35);
+  box-shadow:
+    0 0 0 8px rgba(59,130,246,0.06),
+    0 0 0 16px rgba(59,130,246,0.03),
+    0 20px 50px rgba(0,0,0,0.4);
+  background: var(--surface-raised);
+  animation: holo-circle-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes holo-circle-glow {
+  from { box-shadow: 0 0 0 8px rgba(59,130,246,0.06), 0 0 0 16px rgba(59,130,246,0.03), 0 20px 50px rgba(0,0,0,0.4); }
+  to   { box-shadow: 0 0 0 8px rgba(6,182,212,0.10), 0 0 0 16px rgba(6,182,212,0.05), 0 20px 50px rgba(0,0,0,0.4); }
+}
+
+.holo-detail-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.holo-detail-arrow-btn {
+  position: absolute;
+  bottom: -22px;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #3B82F6, #06B6D4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 6px 20px rgba(59,130,246,0.5);
+  transition: all 0.3s ease;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.holo-detail-arrow-btn:hover {
+  transform: translateY(-4px) scale(1.1);
+  background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+  box-shadow: 0 10px 28px rgba(6,182,212,0.6);
+}
+
+.holo-detail-arrow-btn svg { width: 18px; height: 18px; }
+
+/* Right column: metadata */
+.holo-detail-info-col {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.holo-detail-meta-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.holo-detail-meta-highlight {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.holo-detail-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #10B981;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.25);
+  padding: 6px 14px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+/* ── Animations ───────────────────────────────────── */
+@keyframes holo-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.85); }
+  50%       { opacity: 1;   transform: scale(1.1); }
+}
+
+@keyframes holo-fade-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .holo-container { height: auto; min-height: 680px; }
+  .holo-detail-view { position: relative; padding: 72px 20px 40px; }
+  .holo-detail-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .holo-detail-title-col { text-align: center; }
+  .holo-detail-info-col  { text-align: center; align-items: center; }
+  .holo-detail-title     { font-size: 22px; }
+  .holo-detail-circle    { width: 180px; height: 180px; }
+  .holo-hud-tl { display: none; }
+}
+
+/* ── Light Mode Adjustments ───────────────────────── */
+[data-theme="light"] .holo-blob-top-left    { background: #F59E0B; opacity: 0.10; }
+[data-theme="light"] .holo-blob-bottom-left { background: #10B981; opacity: 0.10; }
+[data-theme="light"] .holo-blob-top-right   { background: #F59E0B; opacity: 0.10; }
+[data-theme="light"] .holo-blob-bottom-right{ background: #10B981; opacity: 0.10; }
+
+[data-theme="light"] .holo-node-label {
+  background: rgba(255,251,240,0.85);
+  border-color: rgba(245,158,11,0.3);
+  color: var(--text-secondary);
+}
+[data-theme="light"] .holo-node-wrap:hover .holo-node-label {
+  color: #F59E0B;
+  border-color: rgba(245,158,11,0.6);
+  background: rgba(245,158,11,0.08);
+}
+[data-theme="light"] .holo-node-wrap:hover .holo-node-circle {
+  box-shadow: 0 8px 30px rgba(245,158,11,0.4), 0 0 0 2px rgba(245,158,11,0.5);
+}
+[data-theme="light"] .holo-hud {
+  background: rgba(245,158,11,0.06);
+  border-color: rgba(245,158,11,0.2);
+}
+[data-theme="light"] .holo-hud-dot {
+  background: #F59E0B;
+  box-shadow: 0 0 6px #F59E0B;
+}
+[data-theme="light"] .holo-detail-issuer-badge {
+  color: #F59E0B;
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.25);
+}
+[data-theme="light"] .holo-back-btn {
+  background: rgba(245,158,11,0.06);
+  border-color: rgba(245,158,11,0.25);
+}
+[data-theme="light"] .holo-back-btn:hover {
+  background: #F59E0B;
+  border-color: #F59E0B;
+}
+[data-theme="light"] .holo-detail-circle {
+  border-color: rgba(245,158,11,0.35);
+}
+[data-theme="light"] .holo-detail-arrow-btn {
+  background: linear-gradient(135deg, #F59E0B, #10B981);
+  box-shadow: 0 6px 20px rgba(245,158,11,0.4);
+}
+[data-theme="light"] .holo-detail-arrow-btn:hover {
+  background: linear-gradient(135deg, #10B981, #D97706);
+}

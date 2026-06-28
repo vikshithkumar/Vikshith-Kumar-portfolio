@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-const Header = ({ onLabToggle, labOpen }) => {
+const SunIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5" strokeWidth={2} strokeLinecap="round" />
+    <path strokeLinecap="round" strokeWidth={2} d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+  </svg>
+);
+
+const MoonIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+  </svg>
+);
+
+const Header = ({ theme, onToggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -17,14 +32,15 @@ const Header = ({ onLabToggle, labOpen }) => {
     { name: 'Contact',      href: '#contact' },
   ];
 
+  const scrolledBg = isDark ? 'rgba(15,23,42,0.92)' : 'rgba(255,251,240,0.92)';
+  const drawerBg   = isDark ? 'rgba(15,23,42,0.98)' : 'rgba(255,251,240,0.98)';
+
   return (
     <>
       <header
         className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
         style={{
-          background: isScrolled
-            ? 'rgba(13,15,20,0.85)'
-            : 'transparent',
+          background: isScrolled ? scrolledBg : 'transparent',
           borderBottom: isScrolled ? '1px solid var(--surface-border)' : '1px solid transparent',
           backdropFilter: isScrolled ? 'blur(16px)' : 'none',
           padding: isScrolled ? '0.85rem 0' : '1.25rem 0',
@@ -32,21 +48,14 @@ const Header = ({ onLabToggle, labOpen }) => {
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <a
-            href="#"
-            className="flex items-center gap-2.5 group"
-            aria-label="Arihant Shukla — Home"
-          >
+          <a href="#" className="flex items-center gap-2.5 group" aria-label="Arihant Shukla — Home">
             <span
               className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold mono transition-all"
               style={{ background: 'var(--accent)', color: '#fff' }}
             >
               A
             </span>
-            <span
-              className="font-semibold text-sm tracking-wide transition-colors"
-              style={{ color: 'var(--text-primary)' }}
-            >
+            <span className="font-semibold text-sm tracking-wide" style={{ color: 'var(--text-primary)' }}>
               Arihant<span style={{ color: 'var(--accent)' }}>.</span>
             </span>
           </a>
@@ -57,10 +66,16 @@ const Header = ({ onLabToggle, labOpen }) => {
               <a
                 key={link.name}
                 href={link.href}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-all relative group"
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
                 style={{ color: 'var(--text-secondary)' }}
-                onMouseEnter={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
-                onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.background = 'transparent'; }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                  e.currentTarget.style.background = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = 'var(--text-secondary)';
+                  e.currentTarget.style.background = 'transparent';
+                }}
               >
                 {link.name}
               </a>
@@ -69,28 +84,56 @@ const Header = ({ onLabToggle, labOpen }) => {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
+            {/* Theme Toggle Button */}
             <button
-              onClick={onLabToggle}
-              className="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium mono transition-all"
+              onClick={onToggleTheme}
+              aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+              title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+              className="relative w-14 h-7 rounded-full flex items-center transition-all duration-300 focus:outline-none"
               style={{
-                background: labOpen ? 'var(--accent-muted)' : 'rgba(255,255,255,0.04)',
-                color: labOpen ? 'var(--accent)' : 'var(--text-secondary)',
-                border: `1px solid ${labOpen ? 'var(--accent)' : 'var(--surface-border)'}`,
+                background: isDark
+                  ? 'linear-gradient(135deg, #1E3A5F, #2563EB)'
+                  : 'linear-gradient(135deg, #FDE68A, #F59E0B)',
+                boxShadow: isDark
+                  ? '0 0 12px rgba(59,130,246,0.4), inset 0 1px 0 rgba(255,255,255,0.1)'
+                  : '0 0 12px rgba(245,158,11,0.4), inset 0 1px 0 rgba(255,255,255,0.3)',
+                border: `1px solid ${isDark ? '#2D3748' : '#E5E7EB'}`,
               }}
-              aria-label="Toggle Design Lab"
-              title="Open Design Lab"
             >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-              </svg>
-              Design Lab
+              {/* Sliding pill */}
+              <span
+                className="absolute w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 shadow-md"
+                style={{
+                  left: isDark ? '2px' : '30px',
+                  background: '#fff',
+                  color: isDark ? '#2563EB' : '#F59E0B',
+                }}
+              >
+                {isDark ? <MoonIcon /> : <SunIcon />}
+              </span>
+              {/* Background icon hint */}
+              <span
+                className="absolute transition-all duration-300"
+                style={{
+                  right: isDark ? '6px' : 'auto',
+                  left: isDark ? 'auto' : '6px',
+                  opacity: 0.6,
+                  color: '#fff',
+                  fontSize: '10px',
+                }}
+              >
+                {isDark ? '☀' : '☽'}
+              </span>
             </button>
 
             {/* Mobile menu toggle */}
             <button
               className="md:hidden w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
-              style={{ color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', border: '1px solid var(--surface-border)' }}
+              style={{
+                color: 'var(--text-secondary)',
+                background: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)',
+                border: '1px solid var(--surface-border)',
+              }}
               onClick={() => setMobileOpen(v => !v)}
               aria-label="Toggle mobile menu"
             >
@@ -112,7 +155,7 @@ const Header = ({ onLabToggle, labOpen }) => {
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 pt-20"
-          style={{ background: 'rgba(13,15,20,0.97)', backdropFilter: 'blur(20px)' }}
+          style={{ background: drawerBg, backdropFilter: 'blur(20px)' }}
         >
           <nav className="flex flex-col gap-2 px-6 py-8">
             {navLinks.map(link => (
@@ -121,17 +164,27 @@ const Header = ({ onLabToggle, labOpen }) => {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className="py-4 px-5 rounded-xl text-lg font-medium transition-all"
-                style={{ color: 'var(--text-primary)', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--surface-border)' }}
+                style={{
+                  color: 'var(--text-primary)',
+                  background: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)',
+                  border: '1px solid var(--surface-border)',
+                }}
               >
                 {link.name}
               </a>
             ))}
+            {/* Theme toggle in mobile drawer */}
             <button
-              onClick={() => { onLabToggle(); setMobileOpen(false); }}
-              className="mt-4 py-4 px-5 rounded-xl text-lg font-medium text-left transition-all mono"
-              style={{ color: 'var(--accent)', background: 'var(--accent-muted)', border: '1px solid var(--accent)' }}
+              onClick={() => { onToggleTheme(); setMobileOpen(false); }}
+              className="mt-4 py-4 px-5 rounded-xl text-lg font-medium text-left transition-all flex items-center gap-3"
+              style={{
+                color: 'var(--accent)',
+                background: 'var(--accent-muted)',
+                border: '1px solid var(--accent)',
+              }}
             >
-              🎨 Design Lab
+              {isDark ? <SunIcon /> : <MoonIcon />}
+              Switch to {isDark ? 'Light' : 'Dark'} Mode
             </button>
           </nav>
         </div>

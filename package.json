@@ -11,9 +11,16 @@
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
+    "@react-three/drei": "^9.121.0",
+    "@react-three/fiber": "^9.0.0",
+    "@react-three/rapier": "^2.2.0",
+    "@use-gesture/react": "^10.3.0",
+    "meshline": "^3.3.1",
+    "ogl": "^0.0.116",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-hot-toast": "^2.6.0"
+    "react-hot-toast": "^2.6.0",
+    "three": "^0.166.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

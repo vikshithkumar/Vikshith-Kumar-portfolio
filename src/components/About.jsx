@@ -4,6 +4,7 @@ import { timeline } from '../siteData';
 const skills = [
   { name: 'JavaScript (ES6+)', cat: 'lang' },
   { name: 'React',             cat: 'framework' },
+  { name: 'Express.js',        cat: 'framework' },
   { name: 'Tailwind CSS',      cat: 'styling' },
   { name: 'HTML5 / CSS3',      cat: 'styling' },
   { name: 'Java',              cat: 'lang' },
@@ -44,19 +45,13 @@ const About = () => (
         {/* Bio column */}
         <div className="lg:col-span-3 space-y-6">
           <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            I got into programming because I wanted to build things that people actually use — not just
-            code exercises. That meant caring about <em>how</em> something looks and feels, not just
-            whether it compiles.
+            I got into programming because I wanted to build things that people actually use — not just code exercises or academic projects. That meant obsessing over how something feels, not just whether it compiles.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            My stack spans the full range: data compression algorithms in Java, 3D card-flip memory games
-            in CSS, SQL schema design, and production React UIs. I approach every project the same way — 
-            understand the problem, sketch the architecture, then build it clean.
+            My stack spans the full spectrum: crafting data compression algorithms in Java, building immersive 3D card-flip games with pure CSS, designing scalable SQL schemas, and shipping production-grade React applications. I approach every project the same way — deeply understand the problem, architect the solution cleanly, then execute with precision.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Outside class, I've done internships in Java development, earned NPTEL certification in Cloud
-            Computing, and picked up Git, DBMS, and frontend tooling certificates along the way. I like
-            learning by shipping.
+            Beyond the classroom, I've built production systems in Java, earned elite certification in Cloud Computing from NPTEL, and continuously leveled up in Git, DBMS, and modern frontend tooling. I believe the best learning happens when you ship.
           </p>
 
           {/* Skills */}
@@ -126,5 +121,6 @@ const About = () => (
     </div>
   </section>
 );
+
 
 export default About;
