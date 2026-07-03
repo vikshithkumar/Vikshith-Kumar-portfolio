@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { siteStats } from '../siteData';
 import Particles from './Particles';
 
-const ROLES = ['Frontend Developer', 'Java Developer', 'Full Stack Dev', 'Backend Engineer'];
+const ROLES = ['Data Engineer', 'Azure Data Engineer', 'PySpark Developer', 'Cloud Data Engineer'];
 
 const Hero = () => {
   const roleRef = useRef(null);
@@ -78,7 +78,7 @@ const Hero = () => {
           className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-[1.08] tracking-tight animate-fade-up"
           style={{ animationDelay: '80ms', color: 'var(--text-primary)' }}
         >
-          Arihant Shukla
+          Vikshith Kumar S
         </h1>
 
         <div
@@ -97,7 +97,7 @@ const Hero = () => {
           className="text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up"
           style={{ animationDelay: '240ms', color: 'var(--text-secondary)' }}
         >
-          I craft clean, efficient code with an obsessive focus on delivering exceptional user experiences. As a final-year Computer Science student, I specialize in architecting scalable applications from the ground up — from high-performance Java backend systems to production-ready React frontends that users actually love.
+          I design and build high-performance data platforms and clean ETL pipelines. As a final-year Computer Science student, I specialize in engineering scalable data warehousing solutions — leveraging Azure Data Factory, Databricks, PySpark, and Cloud Data Lakes to transform raw data streams into optimized analytical insights.
         </p>
 
         {/* CTA buttons */}

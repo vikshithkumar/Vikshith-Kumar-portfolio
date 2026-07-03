@@ -119,7 +119,7 @@ const Certificates = () => {
                 <span className="text-gradient">Certifications</span>
               </h2>
               <p className="max-w-xl text-base" style={{ color: 'var(--text-secondary)' }}>
-                {certificates.length} verified certifications from AWS, Google, SAP, and NPTEL.
+                {certificates.length} verified credentials and certifications from Google Cloud, Microsoft, and Scaler.
               </p>
             </div>
 

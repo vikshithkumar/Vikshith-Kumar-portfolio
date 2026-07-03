@@ -2,21 +2,31 @@ import React from 'react';
 import { timeline } from '../siteData';
 
 const skills = [
-  { name: 'JavaScript (ES6+)', cat: 'lang' },
-  { name: 'React',             cat: 'framework' },
-  { name: 'Express.js',        cat: 'framework' },
-  { name: 'Tailwind CSS',      cat: 'styling' },
-  { name: 'HTML5 / CSS3',      cat: 'styling' },
-  { name: 'Java',              cat: 'lang' },
-  { name: 'C / C++',           cat: 'lang' },
-  { name: 'Python',            cat: 'lang' },
-  { name: 'SQL',               cat: 'data' },
-  { name: 'MongoDB',           cat: 'data' },
-  { name: 'Git & GitHub',      cat: 'tooling' },
-  { name: 'Figma',             cat: 'design' },
-  { name: 'Responsive Design', cat: 'design' },
-  { name: 'REST APIs',         cat: 'tooling' },
-  { name: 'Cloud Computing',   cat: 'infra' },
+  // Data Engineering
+  { name: 'Azure Data Factory', cat: 'de' },
+  { name: 'Databricks',         cat: 'de' },
+  { name: 'PySpark',            cat: 'de' },
+  { name: 'Azure Data Lake',    cat: 'de' },
+  { name: 'Databricks Notebooks', cat: 'de' },
+  // Programming
+  { name: 'Python',             cat: 'lang' },
+  { name: 'SQL',                cat: 'lang' },
+  { name: 'Java',               cat: 'lang' },
+  // Databases
+  { name: 'MySQL',              cat: 'db' },
+  { name: 'MS SQL Server',      cat: 'db' },
+  // Tools
+  { name: 'Git',                cat: 'tools' },
+  { name: 'GitHub',             cat: 'tools' },
+  { name: 'Azure DevOps',       cat: 'tools' },
+  { name: 'Logic Apps',         cat: 'tools' },
+  { name: 'VS Code',            cat: 'tools' },
+  { name: 'Claude AI',          cat: 'tools' },
+  // Concepts
+  { name: 'ETL Pipelines',      cat: 'concepts' },
+  { name: 'Medallion Architecture', cat: 'concepts' },
+  { name: 'Star Schema',        cat: 'concepts' },
+  { name: 'Dimensional Modeling', cat: 'concepts' },
 ];
 
 
@@ -36,8 +46,8 @@ const About = () => (
       {/* Section header */}
       <div className="mb-16">
         <h2 className="text-3xl md:text-5xl font-bold" style={{ color: 'var(--text-primary)' }}>
-          A developer who{' '}
-          <span className="text-gradient">thinks in design</span>
+          A data engineer who{' '}
+          <span className="text-gradient">thinks in scale</span>
         </h2>
       </div>
 
@@ -45,13 +55,13 @@ const About = () => (
         {/* Bio column */}
         <div className="lg:col-span-3 space-y-6">
           <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            I got into programming because I wanted to build things that people actually use — not just code exercises or academic projects. That meant obsessing over how something feels, not just whether it compiles.
+            I got into data engineering because I love solving the puzzle of how massive amounts of raw information flow and scale across cloud ecosystems. For me, it is not just about writing queries; it is about designing pipelines that are reliable, performant, and clean.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            My stack spans the full spectrum: crafting data compression algorithms in Java, building immersive 3D card-flip games with pure CSS, designing scalable SQL schemas, and shipping production-grade React applications. I approach every project the same way — deeply understand the problem, architect the solution cleanly, then execute with precision.
+            As a final-year Computer Science student, I have focused my academic and self-directed path on cloud data platforms and distributed computation. I specialize in building end-to-end ETL pipelines, leveraging Azure Data Factory for orchestration, Databricks and PySpark for transformation, and Azure Data Lake as a scalable storage foundation. My database work extends across MySQL and MS SQL Server, structuring star schemas and dimensional models.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Beyond the classroom, I've built production systems in Java, earned elite certification in Cloud Computing from NPTEL, and continuously leveled up in Git, DBMS, and modern frontend tooling. I believe the best learning happens when you ship.
+            Beyond the classroom, I've built automated pipelines, integrated cloud-native Logic Apps, and earned certifications from Microsoft and Google. I am passionate about engineering modern, scalable data platforms that bridge the gap between complex raw data and real-world business intelligence.
           </p>
 
           {/* Skills */}

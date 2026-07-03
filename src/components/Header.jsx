@@ -52,16 +52,16 @@ const Header = ({ theme, onToggleTheme, setCurrentPage, currentPage }) => {
             href="#" 
             onClick={(e) => { e.preventDefault(); setCurrentPage('home'); window.scrollTo(0,0); }}
             className="flex items-center gap-2.5 group" 
-            aria-label="Arihant Shukla — Home"
+            aria-label="Vikshith Kumar — Home"
           >
             <span
               className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold mono transition-all"
               style={{ background: 'var(--accent)', color: 'var(--text-on-accent)' }}
             >
-              A
+              V
             </span>
             <span className="font-semibold text-lg tracking-tight group-hover:opacity-80 transition-opacity" style={{ color: 'var(--text-primary)' }}>
-              Arihant<span style={{ color: 'var(--accent)' }}>.</span>
+              Vikshith<span style={{ color: 'var(--accent)' }}>.</span>
             </span>
           </a>
 
@@ -70,7 +70,7 @@ const Header = ({ theme, onToggleTheme, setCurrentPage, currentPage }) => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => {
+                onClick={() => {
                   if (currentPage !== 'home') {
                     setCurrentPage('home');
                   }

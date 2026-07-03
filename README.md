@@ -1,8 +1,8 @@
-# Arihant Shukla — Portfolio
+# Vikshith Kumar S — Portfolio
 
-Live at 👉 [arihantshukla.me](https://arihantshukla.me)
+Live at 👉 [vikshithkumar.github.io](https://vikshithkumar.github.io)
 
-A modern, fully responsive personal portfolio showcasing my projects, certifications, and skills as a Full-Stack & Java Developer.
+A modern, fully responsive personal portfolio showcasing my projects, certifications, and skills as a Data Engineer.
 
 ---
 
@@ -21,12 +21,12 @@ A modern, fully responsive personal portfolio showcasing my projects, certificat
 
 | Layer | Technology |
 |---|---|
-| Framework | React 18 + Vite |
+| Framework | React 19 + Vite |
 | 3D / WebGL | Three.js, @react-three/fiber, @react-three/drei |
 | Styling | Tailwind CSS + Vanilla CSS (custom properties) |
 | Animations | CSS keyframes, Three.js useFrame |
 | Forms | Web3Forms API |
-| Deployment | Vercel + Custom Domain |
+| Deployment | GitHub Pages |
 
 ---
 
@@ -34,8 +34,8 @@ A modern, fully responsive personal portfolio showcasing my projects, certificat
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Arihantshukla98/Arihant-portfolio.git
-cd Arihant-portfolio
+git clone https://github.com/vikshithkumar/Vikshith-portfolio.git
+cd Vikshith-portfolio
 
 # 2. Install dependencies
 npm install
@@ -65,13 +65,13 @@ src/
 ├── App.jsx                   # Theme state + routing
 ├── index.css                 # Global CSS variables (dark/light)
 ├── main.jsx
-└── siteData.js               # All content data (projects, certs, stats)
+├── siteData.js               # All content data (projects, certs, stats)
 ```
 
 ---
 
 ## 📬 Contact
 
-- **Email:** arihantshukla24@gmail.com
-- **GitHub:** [@Arihantshukla98](https://github.com/Arihantshukla98)
+- **Email:** vikshitkumar40781@gmail.com
+- **GitHub:** [@vikshithkumar](https://github.com/vikshithkumar)
 - **Location:** Bengaluru, India

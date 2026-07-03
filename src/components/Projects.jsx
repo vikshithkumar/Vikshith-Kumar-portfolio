@@ -2,53 +2,48 @@ import React, { useState, useEffect } from 'react';
 
 const projects = [
   {
-    id: 'campusconnect',
-    title: 'CampusConnect',
-    subtitle: 'Unified Campus Management Platform',
-    description: 'A comprehensive MERN stack web app designed to digitize college operations. Features include a Lost & Found board with Cloudinary image uploads, interactive Event Management, an Academic Resource Hub for sharing study materials, and secure Role-Based Access Control (RBAC) using JWT.',
-    tags: ['React (Vite)', 'Node.js', 'MongoDB', 'TailwindCSS'],
-    accent: 'from-emerald-400 to-teal-500',
-    accentH: 160,
-    github: 'https://github.com/Arihantshukla98/CampusConnect',
-    live: 'https://campus-connect-one-indol.vercel.app',
-    metrics: [
-      { label: 'Stack', value: 'MERN' },
-      { label: 'Auth', value: 'JWT RBAC' },
-      { label: 'Storage', value: 'Cloudinary' },
-    ],
-  },
-  {
-    id: 'qrsafe',
-    title: 'QR Safe – Threat Detection',
-    subtitle: 'React • Spring Boot • Machine Learning',
-    description:
-      'Enterprise-grade protection against Quishing attacks. Combines ML heuristics with real-time threat intelligence feeds (Google Safe Browsing, VirusTotal, RDAP) for instantaneous threat scoring and intelligence reports.',
-    tags: ['React', 'Spring Boot', 'Machine Learning', 'Cybersecurity'],
-    accent: 'from-emerald-400 to-teal-500',
-    accentH: 160,
-    github: 'https://github.com/Arihantshukla98',
-    live: null,
-    metrics: [
-      { label: 'Frontend', value: 'React' },
-      { label: 'Backend', value: 'Java Spring' },
-      { label: 'Type', value: 'Full-Stack App' },
-    ],
-  },
-  {
-    id: 'nagarseva',
-    title: 'NagarSeva AI',
-    subtitle: 'Full-Stack Smart Civic Platform',
-    description:
-      'An AI-powered civic issue reporting platform that enables citizens to report, track, and manage municipal complaints. Features AI-based complaint categorization, secure authentication, image uploads, role-based dashboards, and real-time complaint management through a responsive full-stack application.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Gemini API'],
+    id: 'adf-pipeline',
+    title: 'Azure Data Factory — Cloud Data Pipeline',
+    subtitle: 'ETL • Databricks • PySpark • ADLS Gen2',
+    description: 'An end-to-end data integration solution designed to ingest and process large-scale datasets. Leverages Azure Data Factory (ADF) for orchestration, Azure Data Lake Storage (ADLS Gen2) for raw/processed zones, and Azure Databricks with PySpark to execute transformations following the Medallion architecture (Bronze -> Silver -> Gold).',
+    tags: ['Azure Data Factory', 'Databricks', 'PySpark', 'ADLS Gen2', 'Logic Apps'],
     accent: 'from-blue-400 to-indigo-500',
     accentH: 220,
-    github: null,
-    live: 'https://nagarseva-rq5o.onrender.com/link',
+    github: 'https://github.com/vikshithkumar/Azure_data_factory_Project',
     metrics: [
-      { label: 'Frontend', value: 'React.js' },
-      { label: 'Backend', value: 'Node.js' },
-      { label: 'AI Integration', value: 'Gemini API' },
+      { label: 'Orchestrator', value: 'Azure ADF' },
+      { label: 'Engine', value: 'PySpark' },
+      { label: 'Architecture', value: 'Medallion' },
+    ],
+  },
+  {
+    id: 'dwh-analytics',
+    title: 'Data Warehouse and Analytics Pipeline',
+    subtitle: 'SQL Server • Dimensional Modeling • Star Schema',
+    description: 'A robust data warehousing architecture built to support enterprise-grade business intelligence. Designed clean dimensional models and star schemas to structure business data. Developed automated SQL staging procedures and ETL scripts in Python/MySQL to load data and power analytics dashboard platforms.',
+    tags: ['SQL Server', 'MySQL', 'Star Schema', 'Dimensional Modeling', 'Python'],
+    accent: 'from-emerald-400 to-teal-500',
+    accentH: 160,
+    github: 'https://github.com/vikshithkumar/Sql_Data_Warehouse_Projrct',
+    metrics: [
+      { label: 'Warehouse', value: 'MS SQL Server' },
+      { label: 'Modeling', value: 'Star Schema' },
+      { label: 'ETL Engine', value: 'Python / SQL' },
+    ],
+  },
+  {
+    id: 'finance-budget',
+    title: 'Personal Finance Analysis & Budget Optimisation',
+    subtitle: 'Python • Pandas • Spend Analytics • XGBoost',
+    description: 'An intelligent financial optimization system that tracks, visualizes, and optimizes personal expense budgets. Uses Python data libraries (Pandas, NumPy) to categorize transactions, detect anomalies in spending behaviors, and leverages machine learning models to suggest optimal budget constraints.',
+    tags: ['Python', 'Pandas', 'SQL', 'Data Analytics', 'XGBoost'],
+    accent: 'from-violet-500 to-purple-500',
+    accentH: 270,
+    github: 'https://github.com/vikshithkumar',
+    metrics: [
+      { label: 'Language', value: 'Python' },
+      { label: 'Analysis', value: 'Pandas / NumPy' },
+      { label: 'Optimization', value: 'XGBoost ML' },
     ],
   },
 ];
@@ -173,7 +168,7 @@ const Projects = () => {
         {/* GitHub CTA */}
         <div className="mt-12 text-center">
           <a
-            href="https://github.com/Arihantshukla98"
+            href="https://github.com/vikshithkumar"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-ghost inline-flex"
@@ -291,79 +286,76 @@ const Projects = () => {
               </button>
 
               {/* Content depending on project ID */}
-              {activeProject.id === 'campusconnect' ? (
-                <div className="w-full h-full flex flex-col gap-3 animate-fade-in">
-                  <div className="flex items-center justify-between text-xs text-[var(--text-secondary)] bg-[rgba(255,255,255,0.02)] px-4 py-2.5 rounded-xl border border-[var(--surface-border)]">
-                    <span className="mono flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      Live Preview: campus-connect-one-indol.vercel.app
-                    </span>
-                    <a
-                      href="https://campus-connect-one-indol.vercel.app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[var(--accent)] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
-                    >
-                      Open Link ↗
-                    </a>
-                  </div>
-                  <div className="flex-1 rounded-2xl overflow-hidden border border-[var(--surface-border)] bg-[var(--surface)] relative shadow-inner">
-                    <iframe
-                      src="https://campus-connect-one-indol.vercel.app"
-                      className="w-full h-full border-none"
-                      title="CampusConnect Live Website Preview"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              ) : activeProject.id === 'qrsafe' ? (
-                /* Simulated Threat Detection Scanner Console */
+              {activeProject.id === 'adf-pipeline' ? (
+                /* Simulated ADF Spark pipeline monitor */
                 <div className="w-full h-full rounded-2xl border border-[var(--surface-border)] bg-[#04060a] p-6 font-mono text-[10px] sm:text-xs flex flex-col gap-4 shadow-2xl relative overflow-hidden animate-fade-in">
                   <div className="flex justify-between items-center border-b border-white/10 pb-3 text-[var(--text-secondary)]">
                     <span className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping" />
-                      CORE DETECTOR SCANNER STATUS: ACTIVE
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                      AZURE ADF MONITOR: ACTIVE
                     </span>
-                    <span>ThreatScore: 0.89</span>
+                    <span>Status: SUCCEEDED</span>
                   </div>
-                  <div className="flex-1 flex flex-col gap-2 overflow-y-auto text-emerald-400 leading-relaxed pr-2">
-                    <p className="text-[var(--text-muted)]">[08:42:01] Initializing ML Heuristic models...</p>
-                    <p className="text-[var(--text-muted)]">[08:42:02] Hooking Threat Intelligence API feeds (RDAP, VirusTotal)...</p>
-                    <p>[08:42:03] Payload received: Scanned QR code matrix data</p>
-                    <p className="text-yellow-400">[08:42:04] [REDIRECTS] Payload resolves to redirect-chain: bit.ly {'->'} suspicious-phish.net</p>
-                    <p className="text-yellow-400">[08:42:04] [RDAP] Target domain age: 12 days. Registrar: NameSilo (Suspicious flag)</p>
-                    <p className="text-yellow-400">[08:42:05] [ML-MODEL] Classifier score: 94.2% phishing likelihood (Entropy high)</p>
-                    <p className="text-red-500 font-bold">[08:42:05] [BLOCKING ALERT] QUISHING THREAT DETECTED. Real-time shield blocked payload.</p>
+                  <div className="flex-1 flex flex-col gap-2 overflow-y-auto text-cyan-400 leading-relaxed pr-2">
+                    <p className="text-[var(--text-muted)]">[19:15:01] Triggering pipeline: PL_Ingest_ADLS_Gen2</p>
+                    <p className="text-[var(--text-muted)]">[19:15:02] Running copy activity: Copy_Raw_To_Bronze...</p>
+                    <p>[19:15:05] [BRONZE] Ingested 1.2M records from Blob storage to ADLS Gen2 Delta tables.</p>
+                    <p className="text-yellow-400">[19:15:06] [SILVER] Initiating Databricks PySpark transformation job...</p>
+                    <p className="text-yellow-400">[19:15:08] [SILVER] PySpark clean schema, parsed types, deduplicated keys.</p>
+                    <p className="text-yellow-400">[19:15:10] [GOLD] Running aggregation notebook. Loaded Gold tables.</p>
+                    <p className="text-emerald-400 font-bold">[19:15:12] [SUCCESS] Logic App notification sent. Pipeline run completed in 11.2s.</p>
                   </div>
                   <div className="border-t border-white/10 pt-3 text-[var(--text-muted)] flex justify-between">
-                    <span>Target: Android/iOS QR Matrix</span>
-                    <span>System Shield: V1.0.4</span>
+                    <span className="mono">ADLS Gen2 / Spark 3.4</span>
+                    <span className="mono">RunId: 746-987-9b0d</span>
+                  </div>
+                </div>
+              ) : activeProject.id === 'dwh-analytics' ? (
+                /* Simulated Data Warehouse / Star Schema Modeler console */
+                <div className="w-full h-full rounded-2xl border border-[var(--surface-border)] bg-[#04060a] p-6 font-mono text-[10px] sm:text-xs flex flex-col gap-4 shadow-2xl relative overflow-hidden animate-fade-in">
+                  <div className="flex justify-between items-center border-b border-white/10 pb-3 text-[var(--text-secondary)]">
+                    <span className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse" />
+                      DWH MODELER ENGINE: STANDBY
+                    </span>
+                    <span>Queries Executed: 48</span>
+                  </div>
+                  <div className="flex-1 flex flex-col gap-2 overflow-y-auto text-emerald-400 leading-relaxed pr-2">
+                    <p className="text-[var(--text-muted)]">[19:16:01] Validating DWH schemas on MS SQL Server...</p>
+                    <p className="text-[var(--text-muted)]">[19:16:02] Loading Dimension Tables: Dim_Customers, Dim_Products, Dim_Date</p>
+                    <p>[19:16:03] Dimensional Modeling check: 100% integrity score.</p>
+                    <p className="text-yellow-400">[19:16:04] Loading Fact Table: Fact_Sales (750k rows loaded from staging)</p>
+                    <p className="text-yellow-400">[19:16:06] Executing Star Join query optimization...</p>
+                    <p className="text-yellow-400">[19:16:07] Stored Procedures updated. Rebuilt index structures.</p>
+                    <p className="text-emerald-400 font-bold">[19:16:09] [DWH SUCCESS] Warehouse refreshed. Reporting views updated in 8.1s.</p>
+                  </div>
+                  <div className="border-t border-white/10 pt-3 text-[var(--text-muted)] flex justify-between">
+                    <span className="mono">MS SQL Server / Star Schema</span>
+                    <span className="mono">Engine: V2.1.0</span>
                   </div>
                 </div>
               ) : (
-                /* NagarSeva AI Live Website Preview */
-                <div className="w-full h-full flex flex-col gap-3 animate-fade-in">
-                  <div className="flex items-center justify-between text-xs text-[var(--text-secondary)] bg-[rgba(255,255,255,0.02)] px-4 py-2.5 rounded-xl border border-[var(--surface-border)]">
-                    <span className="mono flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      Live Preview: nagarseva-rq5o.onrender.com
+                /* Simulated Personal Finance optimizer console */
+                <div className="w-full h-full rounded-2xl border border-[var(--surface-border)] bg-[#04060a] p-6 font-mono text-[10px] sm:text-xs flex flex-col gap-4 shadow-2xl relative overflow-hidden animate-fade-in">
+                  <div className="flex justify-between items-center border-b border-white/10 pb-3 text-[var(--text-secondary)]">
+                    <span className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
+                      FINANCE BUDGET OPTIMIZER: ONLINE
                     </span>
-                    <a
-                      href={activeProject.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[var(--accent)] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
-                    >
-                      Open Link ↗
-                    </a>
+                    <span>Optimisation Score: 92%</span>
                   </div>
-                  <div className="flex-1 rounded-2xl overflow-hidden border border-[var(--surface-border)] bg-[var(--surface)] relative shadow-inner">
-                    <iframe
-                      src={activeProject.live}
-                      className="w-full h-full border-none bg-white"
-                      title="NagarSeva AI Live Website Preview"
-                      loading="lazy"
-                    />
+                  <div className="flex-1 flex flex-col gap-2 overflow-y-auto text-purple-400 leading-relaxed pr-2">
+                    <p className="text-[var(--text-muted)]">[19:17:01] Initializing finance analysis model...</p>
+                    <p className="text-[var(--text-muted)]">[19:17:02] Loading transactions from SQL database...</p>
+                    <p>[19:17:03] Pandas loaded 14,200 rows. Cleaned missing categories.</p>
+                    <p className="text-yellow-400">[19:17:04] [ANOMALY DETECTED] Dining expenditure exceeded 30-day average by 43.5%</p>
+                    <p className="text-yellow-400">[19:17:05] Running budget allocation optimizer (XGBoost / SciPy)...</p>
+                    <p className="text-yellow-400">[19:17:07] Generated optimal budget thresholds for next billing cycle.</p>
+                    <p className="text-emerald-400 font-bold">[19:17:08] [SYSTEM RESPONSE] Optimization complete. Recommended budget saved.</p>
+                  </div>
+                  <div className="border-t border-white/10 pt-3 text-[var(--text-muted)] flex justify-between">
+                    <span className="mono">Python / Pandas / XGBoost</span>
+                    <span className="mono">System Status: Active</span>
                   </div>
                 </div>
               )}

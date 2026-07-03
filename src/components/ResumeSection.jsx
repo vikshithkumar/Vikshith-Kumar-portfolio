@@ -12,7 +12,7 @@ const ResumeSection = () => {
         </p>
         <a 
           href="/resume.pdf" 
-          download="Arihant_Shukla_Resume.pdf"
+          download="Vikshith_Kumar_S_Resume.pdf"
           className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:-translate-y-1"
           style={{ 
             background: 'var(--text-primary)', 
