@@ -16,35 +16,61 @@ The project is a premium, modern, fully responsive personal portfolio website fo
 6. **Unified Experience / Resume View**: A clean digital resume matching the monochrome aesthetic, printable, containing full project details, education timelines, skill directories, and a direct link to download the compiled PDF resume.
 7. **Contact Form**: Powered by Web3Forms API to send form submissions directly to the developer's inbox, with custom notification state overlays (idle, sending, success, error) and styled toast messages.
 
+### 📝 Core Portfolio Content (Updated July 2026)
+
+#### Hero Section Subtitle
+> **Building scalable data platforms that transform raw data into trusted insights. Specializing in Azure Data Factory, Databricks, PySpark, SQL, and cloud-native ETL pipelines to deliver reliable, analytics-ready data.**
+
+#### About Section
+##### A Data Engineer Who Builds for Scale
+> I've always been curious about what happens behind the scenes before data appears on a dashboard. That curiosity led me to data engineering—building the pipelines, platforms, and architectures that transform raw data into reliable, analytics-ready information. I enjoy solving complex data challenges and creating systems that are scalable, efficient, and built to last.
+>
+> My work focuses on designing end-to-end data solutions using Azure Data Factory, Databricks, PySpark, Azure Data Lake, SQL Server, and MySQL. From orchestrating ETL workflows and transforming large datasets to designing data warehouses, I enjoy building cloud-native solutions that are reliable, maintainable, and optimized for analytics.
+>
+> As a final-year Computer Science student, I've complemented my academic foundation with hands-on projects, cloud technologies, and certifications from Microsoft and Google. Every project has strengthened my passion for data engineering and reinforced my goal of building modern data platforms that help organizations make confident, data-driven decisions.
+
 ### Active Certificates (Updated July 2026)
-The following 9 certificates are configured in the portfolio data and displayed in both the 3D Sphere and Grid/Resume views:
+The following 10 certificates are configured in the portfolio data and displayed in both the 3D Sphere and Grid/Resume views:
 1. **Microsoft Certified: Fabric Data Engineer Associate**
    * File: [microsoft-fabric-data-engineer.jpg](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/microsoft-fabric-data-engineer.jpg)
    * Issuer: Microsoft
+   * Issue Date: June 2026
 2. **Introduction to Generative AI**
    * File: [google-generative-ai.png](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/google-generative-ai.png)
    * Issuer: Google Cloud
+   * Issue Date: Sep 2024
 3. **Create a Secure Data Lake on Cloud Storage**
    * File: [google-secure-data-lake.png](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/google-secure-data-lake.png)
    * Issuer: Google Cloud
+   * Issue Date: Sep 2024
 4. **Store, Process, and Manage Data on Google Cloud - Console**
    * File: [google-cloud-storage-console.png](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/google-cloud-storage-console.png)
    * Issuer: Google Cloud
+   * Issue Date: Oct 2024
 5. **The Basics of Google Cloud Compute**
    * File: [google-cloud-compute.png](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/google-cloud-compute.png)
    * Issuer: Google Cloud
+   * Issue Date: Oct 2024
 6. **Smart India Hackathon (SIH) 2025**
    * File: [sih-2025.jpg](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/sih-2025.jpg)
    * Issuer: MoE Innovation Cell / NHCE
+   * Issue Date: Sep 2025
 7. **GHCI 2025 - Hackathon Participation Certificate**
    * File: [ghci-2025-hackathon.png](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/ghci-2025-hackathon.png)
    * Issuer: GHCI 2025
+   * Issue Date: Dec 2025
 8. **Claude Code in Action**
    * File: [claude-code-in-action.jpg](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/claude-code-in-action.jpg)
-   * Issuer: Anthropic / Coming Soon
+   * Issuer: Anthropic Academy
+   * Issue Date: Mar 2026
 9. **Scaler DBMS**
    * File: [scaler-dbms.png](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/scaler-dbms.png)
    * Issuer: Scaler
+   * Issue Date: Nov 2025
+10. **IEEE Vibethon Winner**
+    * File: [ieee-vibethon-winner.jpg](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/assets/certificates/ieee-vibethon-winner.jpg)
+    * Issuer: IEEE
+    * Issue Date: Feb 2026
 
 ### 🐙 GitHub Configuration & Repositories
 The portfolio references the following profile and repository paths:
@@ -241,7 +267,7 @@ Used for processing contact forms.
 | Component File | Location | Active | Purpose |
 | :--- | :--- | :--- | :--- |
 | `App.jsx` | [/src/App.jsx](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/App.jsx) | Yes | State holder (Theme, Page context), toast setups, structure assembly. |
-| `Header.jsx` | [/src/components/Header.jsx](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/components/Header.jsx) | Yes | Responsive navbar, custom sliding theme pill toggle, overlay mobile menu. |
+| `Header.jsx` | [/src/components/Header.jsx](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/components/Header.jsx) | Yes | Responsive navbar featuring branding "Vikshith Kumar", custom sliding theme pill toggle, overlay mobile menu. |
 | `Hero.jsx` | [/src/components/Hero.jsx](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/components/Hero.jsx) | Yes | Title, typewriter role cycles, statistics badges, WebGL particle integration. |
 | `About.jsx` | [/src/components/About.jsx](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/components/About.jsx) | Yes | Bio paragraphs, mapping skills directory, interactive timeline path. |
 | `Projects.jsx` | [/src/components/Projects.jsx](file:///d:/Portfolio/Vikshith%20Kumar-portfolio/src/components/Projects.jsx) | Yes | Project showcase grid, overlay detail panel, iframe embeds, terminal simulation. |

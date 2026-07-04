@@ -2,22 +2,23 @@
 // Edit these arrays — Hero stats auto-update from here
 
 // Local certificate image imports
-import googleGenAiImg    from './assets/certificates/google-generative-ai.png';
-import googleDataLakeImg  from './assets/certificates/google-secure-data-lake.png';
-import googleStorageImg   from './assets/certificates/google-cloud-storage-console.png';
-import googleComputeImg   from './assets/certificates/google-cloud-compute.png';
-import sihImg             from './assets/certificates/sih-2025.jpg';
-import msFabricImg        from './assets/certificates/microsoft-fabric-data-engineer.jpg';
-import ghciImg            from './assets/certificates/ghci-2025-hackathon.png';
-import claudeCodeImg      from './assets/certificates/claude-code-in-action.jpg';
-import scalerDbmsImg      from './assets/certificates/scaler-dbms.png';
+import googleGenAiImg from './assets/certificates/google-generative-ai.png';
+import googleDataLakeImg from './assets/certificates/google-secure-data-lake.png';
+import googleStorageImg from './assets/certificates/google-cloud-storage-console.png';
+import googleComputeImg from './assets/certificates/google-cloud-compute.png';
+import sihImg from './assets/certificates/sih-2025.jpg';
+import msFabricImg from './assets/certificates/microsoft-fabric-data-engineer.jpg';
+import ghciImg from './assets/certificates/ghci-2025-hackathon.png';
+import claudeCodeImg from './assets/certificates/claude-code-in-action.jpg';
+import scalerDbmsImg from './assets/certificates/scaler-dbms.png';
+import ieeeVibethonImg from './assets/certificates/ieee-vibethon-winner.jpg';
 
 export const certificates = [
   {
     title: 'Microsoft Certified: Fabric Data Engineer Associate',
-    subtitle: 'Credential ID: DP-600',
+    subtitle: 'Credential ID: DP-700',
     issuer: 'Microsoft',
-    date: 'Coming Soon',
+    date: 'June 2026',
     image: msFabricImg,
     verifyUrl: null,
     icon: '🏆',
@@ -26,7 +27,7 @@ export const certificates = [
     title: 'Introduction to Generative AI',
     subtitle: 'Authorized by Google Cloud',
     issuer: 'Google Cloud',
-    date: 'Coming Soon',
+    date: 'Sep 2024',
     image: googleGenAiImg,
     verifyUrl: null,
     icon: '🤖',
@@ -35,7 +36,7 @@ export const certificates = [
     title: 'Create a Secure Data Lake on Cloud Storage',
     subtitle: 'Authorized by Google Cloud',
     issuer: 'Google Cloud',
-    date: 'Coming Soon',
+    date: 'Sep 2024',
     image: googleDataLakeImg,
     verifyUrl: null,
     icon: '💧',
@@ -44,7 +45,7 @@ export const certificates = [
     title: 'Store, Process, and Manage Data on Google Cloud - Console',
     subtitle: 'Authorized by Google Cloud',
     issuer: 'Google Cloud',
-    date: 'Coming Soon',
+    date: 'Oct 2024',
     image: googleStorageImg,
     verifyUrl: null,
     icon: '🗄️',
@@ -53,7 +54,7 @@ export const certificates = [
     title: 'The Basics of Google Cloud Compute',
     subtitle: 'Authorized by Google Cloud',
     issuer: 'Google Cloud',
-    date: 'Coming Soon',
+    date: 'Oct 2024',
     image: googleComputeImg,
     verifyUrl: null,
     icon: '⚡',
@@ -62,7 +63,7 @@ export const certificates = [
     title: 'Smart India Hackathon (SIH) 2025',
     subtitle: 'Internal Hackathon Winner / Participant',
     issuer: 'MoE Innovation Cell / NHCE',
-    date: 'Coming Soon',
+    date: 'Sep 2025',
     image: sihImg,
     verifyUrl: null,
     icon: '💡',
@@ -71,7 +72,7 @@ export const certificates = [
     title: 'GHCI 2025 - Hackathon Participation Certificate',
     subtitle: 'Grace Hopper Celebration India Hackathon',
     issuer: 'GHCI 2025',
-    date: 'Coming Soon',
+    date: 'Dec 2025',
     image: ghciImg,
     verifyUrl: null,
     icon: '👩‍💻',
@@ -79,8 +80,8 @@ export const certificates = [
   {
     title: 'Claude Code in Action',
     subtitle: 'AI Developer Assistant Certification',
-    issuer: 'Anthropic / Coming Soon',
-    date: 'Coming Soon',
+    issuer: 'Anthropic Academy',
+    date: 'Mar 2026',
     image: claudeCodeImg,
     verifyUrl: null,
     icon: '🧠',
@@ -89,10 +90,19 @@ export const certificates = [
     title: 'Scaler DBMS',
     subtitle: 'Database Management Systems Certification',
     issuer: 'Scaler',
-    date: 'Coming Soon',
+    date: 'Nov 2025',
     image: scalerDbmsImg,
     verifyUrl: null,
     icon: '📊',
+  },
+  {
+    title: 'IEEE Vibethon Winner',
+    subtitle: 'IEEE Winner Certificate',
+    issuer: 'IEEE',
+    date: 'Feb 2026',
+    image: ieeeVibethonImg,
+    verifyUrl: null,
+    icon: '🏆',
   },
 ];
 
@@ -160,7 +170,7 @@ export const timeline = [
 // ── Auto-computed Hero stats ────────────────────────────────────────────────
 export const siteStats = [
   { value: `${certificates.length}`, label: 'Certificates' },
-  { value: `${projects.length}`,     label: 'Data Projects' },
-  { value: '1st',                    label: 'IEEE Vibethon' },
-  { value: 'Microsoft',              label: 'Certified' },
+  { value: `${projects.length}+`, label: 'Data Projects' },
+  { value: '1st', label: 'IEEE Vibethon' },
+  { value: 'Microsoft', label: 'Certified' },
 ];

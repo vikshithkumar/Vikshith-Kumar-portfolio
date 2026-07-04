@@ -157,6 +157,7 @@ const ResumePage = () => {
               <li><strong>Scaler DBMS</strong> | Database Management Systems Certification</li>
               <li><strong>Smart India Hackathon (SIH) 2025</strong> | Participant</li>
               <li><strong>GHCI 2025 Hackathon Participation</strong> | Grace Hopper Celebration India</li>
+              <li><strong>IEEE Vibethon Winner</strong> | IEEE</li>
             </ul>
           </section>
 

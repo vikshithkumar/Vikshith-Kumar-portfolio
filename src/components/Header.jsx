@@ -61,7 +61,7 @@ const Header = ({ theme, onToggleTheme, setCurrentPage, currentPage }) => {
               V
             </span>
             <span className="font-semibold text-lg tracking-tight group-hover:opacity-80 transition-opacity" style={{ color: 'var(--text-primary)' }}>
-              Vikshith<span style={{ color: 'var(--accent)' }}>.</span>
+              Vikshith Kumar
             </span>
           </a>
 

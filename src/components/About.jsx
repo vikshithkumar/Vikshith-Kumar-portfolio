@@ -4,28 +4,28 @@ import { timeline } from '../siteData';
 const skills = [
   // Data Engineering
   { name: 'Azure Data Factory', cat: 'de' },
-  { name: 'Databricks',         cat: 'de' },
-  { name: 'PySpark',            cat: 'de' },
-  { name: 'Azure Data Lake',    cat: 'de' },
+  { name: 'Databricks', cat: 'de' },
+  { name: 'PySpark', cat: 'de' },
+  { name: 'Azure Data Lake', cat: 'de' },
   { name: 'Databricks Notebooks', cat: 'de' },
   // Programming
-  { name: 'Python',             cat: 'lang' },
-  { name: 'SQL',                cat: 'lang' },
-  { name: 'Java',               cat: 'lang' },
+  { name: 'Python', cat: 'lang' },
+  { name: 'SQL', cat: 'lang' },
+  { name: 'Java', cat: 'lang' },
   // Databases
-  { name: 'MySQL',              cat: 'db' },
-  { name: 'MS SQL Server',      cat: 'db' },
+  { name: 'MySQL', cat: 'db' },
+  { name: 'MS SQL Server', cat: 'db' },
   // Tools
-  { name: 'Git',                cat: 'tools' },
-  { name: 'GitHub',             cat: 'tools' },
-  { name: 'Azure DevOps',       cat: 'tools' },
-  { name: 'Logic Apps',         cat: 'tools' },
-  { name: 'VS Code',            cat: 'tools' },
-  { name: 'Claude AI',          cat: 'tools' },
+  { name: 'Git', cat: 'tools' },
+  { name: 'GitHub', cat: 'tools' },
+  { name: 'Azure DevOps', cat: 'tools' },
+  { name: 'Logic Apps', cat: 'tools' },
+  { name: 'VS Code', cat: 'tools' },
+  { name: 'Claude AI', cat: 'tools' },
   // Concepts
-  { name: 'ETL Pipelines',      cat: 'concepts' },
+  { name: 'ETL Pipelines', cat: 'concepts' },
   { name: 'Medallion Architecture', cat: 'concepts' },
-  { name: 'Star Schema',        cat: 'concepts' },
+  { name: 'Star Schema', cat: 'concepts' },
   { name: 'Dimensional Modeling', cat: 'concepts' },
 ];
 
@@ -46,8 +46,8 @@ const About = () => (
       {/* Section header */}
       <div className="mb-16">
         <h2 className="text-3xl md:text-5xl font-bold" style={{ color: 'var(--text-primary)' }}>
-          A data engineer who{' '}
-          <span className="text-gradient">thinks in scale</span>
+          A Data Engineer Who{' '}
+          <span className="text-gradient">Builds for Scale</span>
         </h2>
       </div>
 
@@ -55,13 +55,13 @@ const About = () => (
         {/* Bio column */}
         <div className="lg:col-span-3 space-y-6">
           <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            I got into data engineering because I love solving the puzzle of how massive amounts of raw information flow and scale across cloud ecosystems. For me, it is not just about writing queries; it is about designing pipelines that are reliable, performant, and clean.
+            I've always been curious about what happens behind the scenes before data appears on a dashboard. That curiosity led me to data engineering building the pipelines, platforms, and architectures that transform raw data into reliable, analytics-ready information. I enjoy solving complex data challenges and creating systems that are scalable, efficient, and built to last.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            As a final-year Computer Science student, I have focused my academic and self-directed path on cloud data platforms and distributed computation. I specialize in building end-to-end ETL pipelines, leveraging Azure Data Factory for orchestration, Databricks and PySpark for transformation, and Azure Data Lake as a scalable storage foundation. My database work extends across MySQL and MS SQL Server, structuring star schemas and dimensional models.
+            My work focuses on designing end-to-end data solutions using Azure Data Factory, Databricks, PySpark, Azure Data Lake, SQL Server, and MySQL. From orchestrating ETL workflows and transforming large datasets to designing data warehouses, I enjoy building cloud-native solutions that are reliable, maintainable, and optimized for analytics.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Beyond the classroom, I've built automated pipelines, integrated cloud-native Logic Apps, and earned certifications from Microsoft and Google. I am passionate about engineering modern, scalable data platforms that bridge the gap between complex raw data and real-world business intelligence.
+            As a final-year Computer Science student, I've complemented my academic foundation with hands-on projects, cloud technologies, and certifications from Microsoft and Google. Every project has strengthened my passion for data engineering and reinforced my goal of building modern data platforms that help organizations make confident, data-driven decisions.
           </p>
 
           {/* Skills */}

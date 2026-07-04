@@ -97,7 +97,7 @@ const Hero = () => {
           className="text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up"
           style={{ animationDelay: '240ms', color: 'var(--text-secondary)' }}
         >
-          I design and build high-performance data platforms and clean ETL pipelines. As a final-year Computer Science student, I specialize in engineering scalable data warehousing solutions — leveraging Azure Data Factory, Databricks, PySpark, and Cloud Data Lakes to transform raw data streams into optimized analytical insights.
+          Building scalable data platforms that transform raw data into trusted insights. Specializing in Azure Data Factory, Databricks, PySpark, SQL, and cloud-native ETL pipelines to deliver reliable, analytics-ready data.
         </p>
 
         {/* CTA buttons */}
