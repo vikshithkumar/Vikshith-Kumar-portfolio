@@ -1,52 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-const projects = [
-  {
-    id: 'adf-pipeline',
-    title: 'Azure Data Factory — Cloud Data Pipeline',
-    subtitle: 'ETL • Databricks • PySpark • ADLS Gen2',
-    description: 'An end-to-end data integration solution designed to ingest and process large-scale datasets. Leverages Azure Data Factory (ADF) for orchestration, Azure Data Lake Storage (ADLS Gen2) for raw/processed zones, and Azure Databricks with PySpark to execute transformations following the Medallion architecture (Bronze -> Silver -> Gold).',
-    tags: ['Azure Data Factory', 'Databricks', 'PySpark', 'ADLS Gen2', 'Logic Apps'],
-    accent: 'from-blue-400 to-indigo-500',
-    accentH: 220,
-    github: 'https://github.com/vikshithkumar/Azure_data_factory_Project',
-    metrics: [
-      { label: 'Orchestrator', value: 'Azure ADF' },
-      { label: 'Engine', value: 'PySpark' },
-      { label: 'Architecture', value: 'Medallion' },
-    ],
-  },
-  {
-    id: 'dwh-analytics',
-    title: 'Data Warehouse and Analytics Pipeline',
-    subtitle: 'SQL Server • Dimensional Modeling • Star Schema',
-    description: 'A robust data warehousing architecture built to support enterprise-grade business intelligence. Designed clean dimensional models and star schemas to structure business data. Developed automated SQL staging procedures and ETL scripts in Python/MySQL to load data and power analytics dashboard platforms.',
-    tags: ['SQL Server', 'MySQL', 'Star Schema', 'Dimensional Modeling', 'Python'],
-    accent: 'from-emerald-400 to-teal-500',
-    accentH: 160,
-    github: 'https://github.com/vikshithkumar/Sql_Data_Warehouse_Projrct',
-    metrics: [
-      { label: 'Warehouse', value: 'MS SQL Server' },
-      { label: 'Modeling', value: 'Star Schema' },
-      { label: 'ETL Engine', value: 'Python / SQL' },
-    ],
-  },
-  {
-    id: 'finance-budget',
-    title: 'Personal Finance Analysis & Budget Optimisation',
-    subtitle: 'Python • Pandas • Spend Analytics • XGBoost',
-    description: 'An intelligent financial optimization system that tracks, visualizes, and optimizes personal expense budgets. Uses Python data libraries (Pandas, NumPy) to categorize transactions, detect anomalies in spending behaviors, and leverages machine learning models to suggest optimal budget constraints.',
-    tags: ['Python', 'Pandas', 'SQL', 'Data Analytics', 'XGBoost'],
-    accent: 'from-violet-500 to-purple-500',
-    accentH: 270,
-    github: 'https://github.com/vikshithkumar',
-    metrics: [
-      { label: 'Language', value: 'Python' },
-      { label: 'Analysis', value: 'Pandas / NumPy' },
-      { label: 'Optimization', value: 'XGBoost ML' },
-    ],
-  },
-];
+import { projects } from '../siteData';
 
 const Projects = () => {
   const [hovered, setHovered] = useState(null);
@@ -155,7 +108,7 @@ const Projects = () => {
 
                 {/* Info indicator */}
                 <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider mt-auto pt-4 border-t border-[rgba(255,255,255,0.04)]" style={{ color: hovered === project.id ? 'var(--accent)' : 'var(--text-muted)' }}>
-                  <span>View Details</span>
+                  <span>{project.ctaText || 'View Details'}</span>
                   <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -286,78 +239,51 @@ const Projects = () => {
               </button>
 
               {/* Content depending on project ID */}
-              {activeProject.id === 'adf-pipeline' ? (
-                /* Simulated ADF Spark pipeline monitor */
+              {activeProject.terminal ? (
                 <div className="w-full h-full rounded-2xl border border-[var(--surface-border)] bg-[#04060a] p-6 font-mono text-[10px] sm:text-xs flex flex-col gap-4 shadow-2xl relative overflow-hidden animate-fade-in">
                   <div className="flex justify-between items-center border-b border-white/10 pb-3 text-[var(--text-secondary)]">
                     <span className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                      AZURE ADF MONITOR: ACTIVE
+                      <span className={`w-2.5 h-2.5 rounded-full animate-pulse ${
+                        activeProject.id === 'adf-pipeline' ? 'bg-emerald-500' :
+                        activeProject.id === 'dwh-analytics' ? 'bg-teal-500' :
+                        'bg-indigo-500'
+                      }`} />
+                      {activeProject.terminal.headerLeft}
                     </span>
-                    <span>Status: SUCCEEDED</span>
+                    <span>{activeProject.terminal.headerRight}</span>
                   </div>
-                  <div className="flex-1 flex flex-col gap-2 overflow-y-auto text-cyan-400 leading-relaxed pr-2">
-                    <p className="text-[var(--text-muted)]">[19:15:01] Triggering pipeline: PL_Ingest_ADLS_Gen2</p>
-                    <p className="text-[var(--text-muted)]">[19:15:02] Running copy activity: Copy_Raw_To_Bronze...</p>
-                    <p>[19:15:05] [BRONZE] Ingested 1.2M records from Blob storage to ADLS Gen2 Delta tables.</p>
-                    <p className="text-yellow-400">[19:15:06] [SILVER] Initiating Databricks PySpark transformation job...</p>
-                    <p className="text-yellow-400">[19:15:08] [SILVER] PySpark clean schema, parsed types, deduplicated keys.</p>
-                    <p className="text-yellow-400">[19:15:10] [GOLD] Running aggregation notebook. Loaded Gold tables.</p>
-                    <p className="text-emerald-400 font-bold">[19:15:12] [SUCCESS] Logic App notification sent. Pipeline run completed in 11.2s.</p>
+                  <div className={`flex-1 flex flex-col gap-2 overflow-y-auto leading-relaxed pr-2 ${
+                    activeProject.id === 'adf-pipeline' ? 'text-cyan-400' :
+                    activeProject.id === 'dwh-analytics' ? 'text-emerald-400' :
+                    'text-purple-400'
+                  }`}>
+                    {activeProject.terminal.logs.map((log, index) => {
+                      let colorClass = '';
+                      if (log.type === 'muted') {
+                        colorClass = 'text-[var(--text-muted)]';
+                      } else if (log.type === 'warning') {
+                        colorClass = 'text-yellow-400';
+                      } else if (log.type === 'success') {
+                        colorClass = 'text-emerald-400 font-bold';
+                      }
+                      return (
+                        <p 
+                          key={index} 
+                          className={colorClass}
+                          style={{ whiteSpace: 'pre-wrap' }}
+                        >
+                          {log.text}
+                        </p>
+                      );
+                    })}
                   </div>
                   <div className="border-t border-white/10 pt-3 text-[var(--text-muted)] flex justify-between">
-                    <span className="mono">ADLS Gen2 / Spark 3.4</span>
-                    <span className="mono">RunId: 746-987-9b0d</span>
-                  </div>
-                </div>
-              ) : activeProject.id === 'dwh-analytics' ? (
-                /* Simulated Data Warehouse / Star Schema Modeler console */
-                <div className="w-full h-full rounded-2xl border border-[var(--surface-border)] bg-[#04060a] p-6 font-mono text-[10px] sm:text-xs flex flex-col gap-4 shadow-2xl relative overflow-hidden animate-fade-in">
-                  <div className="flex justify-between items-center border-b border-white/10 pb-3 text-[var(--text-secondary)]">
-                    <span className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse" />
-                      DWH MODELER ENGINE: STANDBY
-                    </span>
-                    <span>Queries Executed: 48</span>
-                  </div>
-                  <div className="flex-1 flex flex-col gap-2 overflow-y-auto text-emerald-400 leading-relaxed pr-2">
-                    <p className="text-[var(--text-muted)]">[19:16:01] Validating DWH schemas on MS SQL Server...</p>
-                    <p className="text-[var(--text-muted)]">[19:16:02] Loading Dimension Tables: Dim_Customers, Dim_Products, Dim_Date</p>
-                    <p>[19:16:03] Dimensional Modeling check: 100% integrity score.</p>
-                    <p className="text-yellow-400">[19:16:04] Loading Fact Table: Fact_Sales (750k rows loaded from staging)</p>
-                    <p className="text-yellow-400">[19:16:06] Executing Star Join query optimization...</p>
-                    <p className="text-yellow-400">[19:16:07] Stored Procedures updated. Rebuilt index structures.</p>
-                    <p className="text-emerald-400 font-bold">[19:16:09] [DWH SUCCESS] Warehouse refreshed. Reporting views updated in 8.1s.</p>
-                  </div>
-                  <div className="border-t border-white/10 pt-3 text-[var(--text-muted)] flex justify-between">
-                    <span className="mono">MS SQL Server / Star Schema</span>
-                    <span className="mono">Engine: V2.1.0</span>
+                    <span className="mono">{activeProject.terminal.footerLeft}</span>
+                    <span className="mono">{activeProject.terminal.footerRight}</span>
                   </div>
                 </div>
               ) : (
-                /* Simulated Personal Finance optimizer console */
-                <div className="w-full h-full rounded-2xl border border-[var(--surface-border)] bg-[#04060a] p-6 font-mono text-[10px] sm:text-xs flex flex-col gap-4 shadow-2xl relative overflow-hidden animate-fade-in">
-                  <div className="flex justify-between items-center border-b border-white/10 pb-3 text-[var(--text-secondary)]">
-                    <span className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
-                      FINANCE BUDGET OPTIMIZER: ONLINE
-                    </span>
-                    <span>Optimisation Score: 92%</span>
-                  </div>
-                  <div className="flex-1 flex flex-col gap-2 overflow-y-auto text-purple-400 leading-relaxed pr-2">
-                    <p className="text-[var(--text-muted)]">[19:17:01] Initializing finance analysis model...</p>
-                    <p className="text-[var(--text-muted)]">[19:17:02] Loading transactions from SQL database...</p>
-                    <p>[19:17:03] Pandas loaded 14,200 rows. Cleaned missing categories.</p>
-                    <p className="text-yellow-400">[19:17:04] [ANOMALY DETECTED] Dining expenditure exceeded 30-day average by 43.5%</p>
-                    <p className="text-yellow-400">[19:17:05] Running budget allocation optimizer (XGBoost / SciPy)...</p>
-                    <p className="text-yellow-400">[19:17:07] Generated optimal budget thresholds for next billing cycle.</p>
-                    <p className="text-emerald-400 font-bold">[19:17:08] [SYSTEM RESPONSE] Optimization complete. Recommended budget saved.</p>
-                  </div>
-                  <div className="border-t border-white/10 pt-3 text-[var(--text-muted)] flex justify-between">
-                    <span className="mono">Python / Pandas / XGBoost</span>
-                    <span className="mono">System Status: Active</span>
-                  </div>
-                </div>
+                <div className="text-white font-mono text-xs">No preview terminal available.</div>
               )}
             </div>
 

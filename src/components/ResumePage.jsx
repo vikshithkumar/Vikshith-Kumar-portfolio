@@ -31,7 +31,7 @@ const ResumePage = () => {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 vikshitkumar40781@gmail.com
               </a>
-              <a href="https://www.linkedin.com/in/vikshith-kumar-s" target="_blank" rel="noreferrer" className="hover:text-[var(--text-primary)] flex items-center gap-1.5">
+              <a href="https://www.linkedin.com/in/vikshithkumar" target="_blank" rel="noreferrer" className="hover:text-[var(--text-primary)] flex items-center gap-1.5">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 LinkedIn
               </a>
@@ -63,7 +63,7 @@ const ResumePage = () => {
           <section>
             <h2 className="text-xl font-bold mb-4 pb-2 border-b" style={{ color: 'var(--text-primary)', borderColor: 'var(--surface-border)' }}>Professional Summary</h2>
             <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Computer Science and Engineering student at New Horizon College of Engineering with a strong focus on Data Engineering, Cloud Infrastructure, and distributed computing systems. Skilled in designing and developing end-to-end ETL pipelines, cloud platforms, and scalable data warehouses. Proficient in Azure Data Factory, Databricks, PySpark, and Azure Data Lake, alongside core programming languages Python, SQL, and Java. Microsoft Certified Fabric Data Engineer Associate with experience building robust database solutions and dimensional models.
+              Computer Science student focused on designing scalable data platforms and cloud-native ETL pipelines. Experienced in building metadata-driven data pipelines, modern data warehouses, and analytics solutions using Azure Data Factory, Databricks, PySpark, SQL, Python, and Microsoft Fabric. Passionate about building reusable, reliable, and maintainable data systems.
             </p>
           </section>
 
@@ -101,10 +101,10 @@ const ResumePage = () => {
                 <h3 className="font-bold text-base mb-1" style={{ color: 'var(--text-primary)' }}>Azure Data Factory — Cloud Data Pipeline</h3>
                 <p className="text-sm mb-2" style={{ color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-secondary)' }}>Tech Stack:</strong> Azure Data Factory, Azure Databricks, PySpark, ADLS Gen2, Logic Apps.</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  <li>Developed an end-to-end ETL pipeline to ingest and process large-scale datasets from raw ingestion to analytical layers.</li>
-                  <li>Configured Azure Data Lake Storage (ADLS Gen2) architecture using the Medallion framework (Bronze, Silver, Gold staging layers).</li>
-                  <li>Implemented PySpark transformation logic in Databricks notebooks to perform schema validation, deduplication, and parsing.</li>
-                  <li>Integrated Logic Apps for automated pipeline run status notifications and error reporting workflows.</li>
+                  <li>Designed and built a metadata-driven ETL platform that ingests data from files, SQL databases, REST APIs, and GitHub into Azure Data Lake Storage Gen2.</li>
+                  <li>Implemented a Medallion Architecture (Bronze → Silver → Gold) using Azure Data Factory, Databricks, and PySpark for scalable data processing.</li>
+                  <li>Developed reusable PySpark transformation pipelines for schema validation, deduplication, and business transformations.</li>
+                  <li>Integrated Azure Logic Apps for automated pipeline monitoring, failure notifications, and operational alerts.</li>
                 </ul>
               </div>
 
@@ -112,10 +112,10 @@ const ResumePage = () => {
                 <h3 className="font-bold text-base mb-1" style={{ color: 'var(--text-primary)' }}>Data Warehouse and Analytics Pipeline</h3>
                 <p className="text-sm mb-2" style={{ color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-secondary)' }}>Tech Stack:</strong> MS SQL Server, MySQL, Python, Star Schema, Dimensional Modeling.</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  <li>Designed scalable dimensional models and star schemas to structure transaction logs and records.</li>
-                  <li>Built automated SQL staging mechanisms and Python-based ETL scripts for incremental and full loads.</li>
-                  <li>Optimized complex star-join queries and database indexing structures to reduce analytic response times.</li>
-                  <li>Refreshed reporting warehouse views to support seamless business intelligence dashboard integration.</li>
+                  <li>Designed a modern Star Schema data warehouse supporting analytical reporting and business intelligence workloads.</li>
+                  <li>Built Python and SQL ETL pipelines for incremental and full data loading into dimension and fact tables.</li>
+                  <li>Developed staging, dimension, and fact layers following Kimball dimensional modeling principles.</li>
+                  <li>Optimized warehouse performance through indexing strategies and query tuning for faster analytical workloads.</li>
                 </ul>
               </div>
 
@@ -123,10 +123,10 @@ const ResumePage = () => {
                 <h3 className="font-bold text-base mb-1" style={{ color: 'var(--text-primary)' }}>Personal Finance Analysis and Budget Optimisation System</h3>
                 <p className="text-sm mb-2" style={{ color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-secondary)' }}>Tech Stack:</strong> Python, Pandas, NumPy, MS SQL Server, XGBoost, SciPy.</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  <li>Engineered an intelligent budgeting application that tracks, visualizes, and optimizes personal expenditures.</li>
-                  <li>Leveraged Python Pandas and NumPy libraries for data cleansing, aggregation, and financial anomaly detection.</li>
-                  <li>Integrated SQL databases for secure storage of historical transaction statements and budget thresholds.</li>
-                  <li>Implemented machine learning models (XGBoost) and optimization algorithms to recommend monthly budget caps.</li>
+                  <li>Developed a personal finance analytics platform to track spending patterns and generate data-driven budget recommendations.</li>
+                  <li>Built ETL workflows using Pandas and NumPy to clean, transform, and categorize transaction data.</li>
+                  <li>Designed relational database schemas to manage financial transactions and budgeting information.</li>
+                  <li>Applied machine learning techniques to identify spending anomalies and recommend optimized monthly budgets.</li>
                 </ul>
               </div>
             </div>
@@ -136,11 +136,11 @@ const ResumePage = () => {
           <section>
             <h2 className="text-xl font-bold mb-4 pb-2 border-b" style={{ color: 'var(--text-primary)', borderColor: 'var(--surface-border)' }}>Technical Skills</h2>
             <ul className="space-y-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-              <li><strong style={{ color: 'var(--text-primary)' }}>Data Engineering:</strong> Azure Data Factory, Databricks, PySpark, Azure Data Lake, Databricks Notebooks</li>
+              <li><strong style={{ color: 'var(--text-primary)' }}>Data Engineering:</strong> Azure Data Factory, Azure Databricks, PySpark, Azure Data Lake Storage Gen2, Microsoft Fabric, Logic Apps</li>
               <li><strong style={{ color: 'var(--text-primary)' }}>Programming Languages:</strong> Python, SQL, Java</li>
-              <li><strong style={{ color: 'var(--text-primary)' }}>Databases:</strong> MySQL, MS SQL Server</li>
-              <li><strong style={{ color: 'var(--text-primary)' }}>Tools:</strong> Git, GitHub, Azure DevOps, Logic Apps, VS Code, Claude AI</li>
-              <li><strong style={{ color: 'var(--text-primary)' }}>Concepts:</strong> ETL Pipelines, Medallion Architecture, Star Schema, Dimensional Modeling</li>
+              <li><strong style={{ color: 'var(--text-primary)' }}>Databases:</strong> Microsoft SQL Server, MySQL</li>
+              <li><strong style={{ color: 'var(--text-primary)' }}>Data Warehousing & Analytics:</strong> ETL Pipelines, Medallion Architecture, Star Schema, Dimensional Modeling, Incremental Data Loading</li>
+              <li><strong style={{ color: 'var(--text-primary)' }}>Tools:</strong> Git, GitHub, Azure DevOps, VS Code</li>
             </ul>
           </section>
 
@@ -148,16 +148,9 @@ const ResumePage = () => {
           <section>
             <h2 className="text-xl font-bold mb-4 pb-2 border-b" style={{ color: 'var(--text-primary)', borderColor: 'var(--surface-border)' }}>Certifications</h2>
             <ul className="list-disc pl-5 space-y-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-              <li><strong>Microsoft Certified: Fabric Data Engineer Associate</strong> – DP-600</li>
-              <li><strong>Claude Code in Action</strong> | AI Developer Assistant Certification</li>
-              <li><strong>Introduction to Generative AI</strong> | Google Cloud</li>
-              <li><strong>Create a Secure Data Lake on Cloud Storage</strong> | Google Cloud</li>
-              <li><strong>Store, Process, and Manage Data on Google Cloud – Console</strong> | Google Cloud</li>
-              <li><strong>The Basics of Google Cloud Compute</strong> | Google Cloud</li>
-              <li><strong>Scaler DBMS</strong> | Database Management Systems Certification</li>
-              <li><strong>Smart India Hackathon (SIH) 2025</strong> | Participant</li>
-              <li><strong>GHCI 2025 Hackathon Participation</strong> | Grace Hopper Celebration India</li>
-              <li><strong>IEEE Vibethon Winner</strong> | IEEE</li>
+              <li><strong>Microsoft Certified: Fabric Data Engineer Associate</strong> (DP-700)</li>
+              <li><strong>Claude Code in Action</strong> – AI Developer Assistant</li>
+              <li><strong>Introduction to Generative AI</strong></li>
             </ul>
           </section>
 
@@ -165,7 +158,7 @@ const ResumePage = () => {
           <section>
             <h2 className="text-xl font-bold mb-4 pb-2 border-b" style={{ color: 'var(--text-primary)', borderColor: 'var(--surface-border)' }}>Awards & Achievements</h2>
             <ul className="list-disc pl-5 space-y-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-              <li><strong>IEEE Vibethon Winner (1st Place)</strong> – Led a 4-member team to build a Student Carpool & Ride Subscription System, winning 1st place out of 30+ teams.</li>
+              <li><strong>IEEE Vibethon Winner (1st Place)</strong> – Led a team of four to design and build a Student Carpool & Ride Subscription System, securing 1st place among 30+ teams at IEEE Vibethon 2025.</li>
             </ul>
           </section>
 

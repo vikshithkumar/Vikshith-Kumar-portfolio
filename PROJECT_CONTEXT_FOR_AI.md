@@ -12,22 +12,34 @@ The project is a premium, modern, fully responsive personal portfolio website fo
 2. **Interactive 3D Certificates Sphere**: A dynamic 3D globe rendered with Three.js (React Three Fiber) containing certificates as interactive node badges. Users can drag to rotate, scroll to zoom, hover to trigger rotating neon HUD rings, and click to view certificates in a custom holographic detail modal.
 3. **Alternative List Grid View**: A fallback clean grid of certificate cards containing local image renders and overlay expand options with Lightbox modals.
 4. **Animated Hero Section**: A high-performance WebGL particle background rendering 250 interactive drifting particles. Typewriter-effect role cycler for key specializations.
-5. **Projects Showcase**: Interactive cards featuring custom metrics, tech stacks, details, repository links, and simulated interactive console previews (e.g. Azure Data Factory Spark pipeline monitor logs, Data Warehouse dimensional schema validator logs).
+5. **Projects Showcase**: Interactive cards featuring custom metrics, tech stacks, details, repository links, and simulated interactive console previews following enterprise data engineering workflows (Configuration -> Discovery -> Validation -> Processing -> Transformation -> Optimization -> Monitoring -> Notification -> Success).
 6. **Unified Experience / Resume View**: A clean digital resume matching the monochrome aesthetic, printable, containing full project details, education timelines, skill directories, and a direct link to download the compiled PDF resume.
 7. **Contact Form**: Powered by Web3Forms API to send form submissions directly to the developer's inbox, with custom notification state overlays (idle, sending, success, error) and styled toast messages.
 
 ### 📝 Core Portfolio Content (Updated July 2026)
 
 #### Hero Section Subtitle
-> **Building scalable data platforms that transform raw data into trusted insights. Specializing in Azure Data Factory, Databricks, PySpark, SQL, and cloud-native ETL pipelines to deliver reliable, analytics-ready data.**
+> **I build scalable, cloud-native data platforms that transform raw data into trusted insights. My focus is on designing reusable ETL pipelines, modern data warehouses, and reliable analytics systems using Azure Data Factory, Databricks, PySpark, and SQL.**
 
 #### About Section
-##### A Data Engineer Who Builds for Scale
-> I've always been curious about what happens behind the scenes before data appears on a dashboard. That curiosity led me to data engineering—building the pipelines, platforms, and architectures that transform raw data into reliable, analytics-ready information. I enjoy solving complex data challenges and creating systems that are scalable, efficient, and built to last.
+##### Designing Data Systems That Scale
+> My interest in Data Engineering started with a simple question: what happens before data appears on a dashboard? That curiosity led me to designing pipelines, data platforms, and architectures that transform raw data into reliable, analytics-ready information. I enjoy solving engineering problems where scalability, automation, and maintainability matter just as much as moving data.
 >
-> My work focuses on designing end-to-end data solutions using Azure Data Factory, Databricks, PySpark, Azure Data Lake, SQL Server, and MySQL. From orchestrating ETL workflows and transforming large datasets to designing data warehouses, I enjoy building cloud-native solutions that are reliable, maintainable, and optimized for analytics.
+> My projects focus on building production-style data platforms using Azure Data Factory, Databricks, PySpark, Azure Data Lake, SQL Server, and MySQL. I enjoy designing reusable ETL pipelines, dimensional models, and cloud-native architectures that are easy to extend as new data sources are introduced.
 >
-> As a final-year Computer Science student, I've complemented my academic foundation with hands-on projects, cloud technologies, and certifications from Microsoft and Google. Every project has strengthened my passion for data engineering and reinforced my goal of building modern data platforms that help organizations make confident, data-driven decisions.
+> Alongside my Computer Science degree, I've focused on gaining practical experience through hands-on projects and cloud certifications. Every project has reinforced an engineering mindset centered on automation, reliability, and designing systems that remain simple as they grow.
+
+#### Resume Page Content
+##### Professional Summary
+> Computer Science student focused on designing scalable data platforms and cloud-native ETL pipelines. Experienced in building metadata-driven data pipelines, modern data warehouses, and analytics solutions using Azure Data Factory, Databricks, PySpark, SQL, Python, and Microsoft Fabric. Passionate about building reusable, reliable, and maintainable data systems.
+
+##### Projects (Resume View)
+*   **Azure Data Factory — Cloud Data Pipeline**: Designed and built a metadata-driven ETL platform that ingests data from files, SQL databases, REST APIs, and GitHub into Azure Data Lake Storage Gen2. Medallion architecture, reusable PySpark transformations, Logic Apps monitoring.
+*   **Data Warehouse and Analytics Pipeline**: Designed a modern Star Schema data warehouse supporting analytical reporting and business intelligence workloads. Python/SQL ETL incremental loading, staging/dimension/fact layers, query/indexing optimization.
+*   **Personal Finance Analysis & Budget Optimisation**: Developed a personal finance analytics platform to track spending patterns and generate data-driven budget recommendations. Pandas/NumPy ETL workflows, relational database schema, XGBoost ML spending anomaly detection and budget optimization.
+
+##### Awards & Achievements
+> Led a team of four to design and build a Student Carpool & Ride Subscription System, securing 1st place among 30+ teams at IEEE Vibethon 2025.
 
 ### Active Certificates (Updated July 2026)
 The following 10 certificates are configured in the portfolio data and displayed in both the 3D Sphere and Grid/Resume views:
@@ -230,6 +242,7 @@ Configuration details, project details, timeline events, and credential records 
 *   Data is exported as static arrays (`certificates`, `projects`, `timeline`).
 *   Imported by components (`Hero`, `About`, `Projects`, `Certificates`, `ResumePage`) to iterate and build the respective views.
 *   `siteStats` inside `siteData.js` is automatically computed based on the arrays' lengths to ensure stats in the hero section update automatically when lists change.
+*   **Terminal Simulation Config**: Terminal log sequences, headers, and metadata are defined dynamically in `siteData.js` under the `terminal` key of each project object. These sequences follow a realistic 9-step enterprise data engineering workflow (Configuration -> Discovery -> Validation -> Processing -> Transformation -> Optimization -> Monitoring -> Notification -> Success) and are rendered dynamically in `Projects.jsx`.
 
 ### Theme Flow
 *   `theme` state (`'dark'` or `'light'`) is declared in `App.jsx`.

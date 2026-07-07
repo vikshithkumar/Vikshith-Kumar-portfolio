@@ -46,8 +46,8 @@ const About = () => (
       {/* Section header */}
       <div className="mb-16">
         <h2 className="text-3xl md:text-5xl font-bold" style={{ color: 'var(--text-primary)' }}>
-          A Data Engineer Who{' '}
-          <span className="text-gradient">Builds for Scale</span>
+          Designing Data Systems{' '}
+          <span className="text-gradient">That Scale</span>
         </h2>
       </div>
 
@@ -55,13 +55,13 @@ const About = () => (
         {/* Bio column */}
         <div className="lg:col-span-3 space-y-6">
           <p className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            I've always been curious about what happens behind the scenes before data appears on a dashboard. That curiosity led me to data engineering building the pipelines, platforms, and architectures that transform raw data into reliable, analytics-ready information. I enjoy solving complex data challenges and creating systems that are scalable, efficient, and built to last.
+            My interest in Data Engineering started with a simple question: what happens before data appears on a dashboard? That curiosity led me to designing pipelines, data platforms, and architectures that transform raw data into reliable, analytics-ready information. I enjoy solving engineering problems where scalability, automation, and maintainability matter just as much as moving data.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            My work focuses on designing end-to-end data solutions using Azure Data Factory, Databricks, PySpark, Azure Data Lake, SQL Server, and MySQL. From orchestrating ETL workflows and transforming large datasets to designing data warehouses, I enjoy building cloud-native solutions that are reliable, maintainable, and optimized for analytics.
+            My projects focus on building production-style data platforms using Azure Data Factory, Databricks, PySpark, Azure Data Lake, SQL Server, and MySQL. I enjoy designing reusable ETL pipelines, dimensional models, and cloud-native architectures that are easy to extend as new data sources are introduced.
           </p>
           <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            As a final-year Computer Science student, I've complemented my academic foundation with hands-on projects, cloud technologies, and certifications from Microsoft and Google. Every project has strengthened my passion for data engineering and reinforced my goal of building modern data platforms that help organizations make confident, data-driven decisions.
+            Alongside my Computer Science degree, I've focused on gaining practical experience through hands-on projects and cloud certifications. Every project has reinforced an engineering mindset centered on automation, reliability, and designing systems that remain simple as they grow.
           </p>
 
           {/* Skills */}

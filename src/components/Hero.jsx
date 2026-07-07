@@ -97,7 +97,7 @@ const Hero = () => {
           className="text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up"
           style={{ animationDelay: '240ms', color: 'var(--text-secondary)' }}
         >
-          Building scalable data platforms that transform raw data into trusted insights. Specializing in Azure Data Factory, Databricks, PySpark, SQL, and cloud-native ETL pipelines to deliver reliable, analytics-ready data.
+          I build scalable, cloud-native data platforms that transform raw data into trusted insights. My focus is on designing reusable ETL pipelines, modern data warehouses, and reliable analytics systems using Azure Data Factory, Databricks, PySpark, and SQL.
         </p>
 
         {/* CTA buttons */}
