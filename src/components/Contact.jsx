@@ -56,11 +56,8 @@ const contactInfo = [
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [senderName, setSenderName] = useState('');
-  const [senderEmail, setSenderEmail] = useState('');
   const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
   const [errorMsg, setErrorMsg] = useState('');
-  const [hoveredCard, setHoveredCard] = useState(null);
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -89,9 +86,6 @@ const Contact = () => {
       const data = await res.json();
 
       if (data.success) {
-        setSenderName(formData.name); // capture name before reset
-        setSenderEmail(formData.email); // capture email before reset
-        setFormData({ name: '', email: '', message: '' });
         setStatus('success');
       } else {
         setErrorMsg(data.message || 'Something went wrong. Please try again.');
@@ -129,7 +123,6 @@ const Contact = () => {
           <div className="space-y-6">
             {contactInfo.map(info => {
               const CardTag = info.href ? 'a' : 'div';
-              const isHovered = hoveredCard === info.id;
               const cardProps = info.href
                 ? {
                   href: info.href,
@@ -144,8 +137,6 @@ const Contact = () => {
                   {...cardProps}
                   className="glass-card p-6 flex items-start gap-5 group transition-all duration-200 hover:-translate-y-0.5"
                   style={{ borderRadius: 'var(--radius)' }}
-                  onMouseEnter={() => setHoveredCard(info.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
@@ -156,8 +147,8 @@ const Contact = () => {
                   <div>
                     <p className="text-xs font-medium mb-1" style={{ color: 'var(--text-muted)' }}>{info.label}</p>
                     <p
-                      className="text-sm font-medium transition-colors duration-200"
-                      style={{ color: isHovered && info.href ? 'var(--accent)' : 'var(--text-primary)' }}
+                      className="text-sm font-medium transition-colors duration-200 group-hover:text-[var(--accent)]"
+                      style={{ color: 'var(--text-primary)' }}
                     >
                       {info.value}
                     </p>
@@ -187,14 +178,14 @@ const Contact = () => {
                   Message Sent! 🎉
                 </h3>
                 <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  {senderName ? `Thanks, ${senderName}! ` : 'Thanks! '}
+                  {formData.name ? `Thanks, ${formData.name}! ` : 'Thanks! '}
                   I'll reply to you at{' '}
-                  <span style={{ color: 'var(--accent)' }}>{senderEmail}</span>{' '}
+                  <span style={{ color: 'var(--accent)' }}>{formData.email}</span>{' '}
                   as soon as possible.
                 </p>
               </div>
               <button
-                onClick={() => { setStatus('idle'); setSenderName(''); setSenderEmail(''); }}
+                onClick={() => { setStatus('idle'); setFormData({ name: '', email: '', message: '' }); }}
                 className="btn-ghost text-sm px-5 py-2.5"
                 style={{ borderRadius: 'calc(var(--radius) * 0.6)' }}
               >

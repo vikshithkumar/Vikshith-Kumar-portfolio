@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { projects } from '../siteData';
 
 const Projects = () => {
-  const [hovered, setHovered] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
 
   useEffect(() => {
@@ -45,16 +44,10 @@ const Projects = () => {
           {projects.map(project => (
             <article
               key={project.id}
-              className="glass-card flex flex-col group transition-all duration-300 cursor-pointer"
+              className="glass-card flex flex-col group transition-all duration-300 cursor-pointer hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),_0_0_30px_var(--accent-glow)]"
               style={{
                 borderRadius: 'var(--radius)',
-                transform: hovered === project.id ? 'translateY(-6px)' : 'translateY(0)',
-                boxShadow: hovered === project.id
-                  ? `0 20px 60px rgba(0,0,0,0.4), 0 0 30px var(--accent-glow)`
-                  : undefined,
               }}
-              onMouseEnter={() => setHovered(project.id)}
-              onMouseLeave={() => setHovered(null)}
               onClick={() => setActiveProject(project)}
             >
 
@@ -75,8 +68,8 @@ const Projects = () => {
               <div className="p-6 flex flex-col flex-1">
                 <div className="mb-4">
                   <h3
-                    className="text-xl font-bold mb-1 transition-colors duration-200"
-                    style={{ color: hovered === project.id ? 'var(--accent)' : 'var(--text-primary)' }}
+                    className="text-xl font-bold mb-1 transition-colors duration-200 group-hover:text-[var(--accent)]"
+                    style={{ color: 'var(--text-primary)' }}
                   >
                     {project.title}
                   </h3>
@@ -107,7 +100,7 @@ const Projects = () => {
                 </div>
 
                 {/* Info indicator */}
-                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider mt-auto pt-4 border-t border-[rgba(255,255,255,0.04)]" style={{ color: hovered === project.id ? 'var(--accent)' : 'var(--text-muted)' }}>
+                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider mt-auto pt-4 border-t border-[rgba(255,255,255,0.04)] group-hover:text-[var(--accent)]" style={{ color: 'var(--text-muted)' }}>
                   <span>{project.ctaText || 'View Details'}</span>
                   <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
